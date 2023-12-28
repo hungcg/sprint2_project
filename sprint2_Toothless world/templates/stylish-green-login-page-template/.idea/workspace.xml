@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="09fd3e23-0ba4-4403-a5e7-64178eab4c5a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/bag.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/bowl-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/bowl-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/cart.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/couch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/cross.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/dots-green.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/dots-light.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/dots-yellow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/envelope-outline.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/img-grid-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/img-grid-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/img-grid-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/person_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/post-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/post-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/post-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/product-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/product-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/product-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/return.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/sofa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/support.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/truck.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/public/images/why-choose-us-img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/component/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/component/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/component/HomePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/component/Login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/css/homepage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FE/fe-sprint2/src/js/tiny-slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furni-1.0.0/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furni-1.0.0/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furni-1.0.0/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2aAEP78y4xB54luep5YGTd2yqVX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "hung",
+    "last_opened_file_path": "D:/sprint_2/sprint2_Toothless world/templates/stylish-green-login-page-template",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="09fd3e23-0ba4-4403-a5e7-64178eab4c5a" name="Changes" comment="" />
+      <created>1703752955852</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703752955852</updated>
+      <workItem from="1703752957062" duration="1629000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

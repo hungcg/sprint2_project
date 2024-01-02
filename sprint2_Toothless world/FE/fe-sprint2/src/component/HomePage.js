@@ -1,6 +1,7 @@
 import React from 'react';
 import "../css/homepage.css"
 import "../css/bootstrap.min.css"
+import {Link} from "react-router-dom";
 
 
 function HomePage() {
@@ -20,25 +21,25 @@ function HomePage() {
                                     Chạm nhẹ vào lối sống tinh tế, nâng tầm vẻ đẹp của không gian bằng nội thất độc đáo và sang trọng.
                                 </p>
                                 <p>
-                                    <a href="" style={{fontWeight: "600",
+                                    <Link href="" style={{fontWeight: "600",
                                         padding: "12px 30px",
                                         borderRadius: "30px",fontSize:"1.1rem"}}
-                                       className="btn btn-secondary text-dark me-3">
+                                       className="btn btn-secondary text-dark me-3" to="/shop">
                                         Cửa hàng
-                                    </a>
-                                    <a href="#" style={{fontWeight: "600",
+                                    </Link>
+                                    <Link href="#" style={{fontWeight: "600",
                                         padding: "12px 30px",
                                         borderRadius: "30px"}}
-                                       className="btn btn-white-outline text-light">
+                                       className="btn btn-white-outline text-light" to="/shop">
                                         Khám phá
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
                         <div className="col-lg-7">
                             <div className="hero-img-wrap">
                                 <img
-                                    src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/couch.png"
+                                    src="https://themewagon.github.io/furni/images/couch.png"
                                     className="img-fluid"/>
                             </div>
                         </div>
@@ -60,43 +61,43 @@ function HomePage() {
                                 velit. Aliquam vulputate velit imperdiet dolor tempor tristique.{" "}
                             </p>
                             <p>
-                                <a href="shop.html" style={{fontWeight: "600",
+                                <Link  style={{fontWeight: "600",
                                     padding: "12px 30px",
-                                    borderRadius: "30px"}} className="btn btn-dark text-light">
+                                    borderRadius: "30px"}} className="btn btn-dark text-light" to="/shop">
                                    Khám phá
-                                </a>
+                                </Link>
                             </p>
                         </div>
                         {/* End Column 1 */}
                         {/* Start Column 2 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a className="product-item" href="cart.html">
+                            <Link className="product-item" to="/detail">
                                 <img
-                                    src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-1.png"
+                                    src="https://themewagon.github.io/furni/images/product-1.png"
                                     className="img-fluid product-thumbnail"
                                 />
                                 <h3 className="product-title">Nordic Chair</h3>
                                 <strong className="product-price">$50.00</strong>
                                 <span className="icon-cross">
               <img
-                  src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/cross.svg"
+                  src="https://themewagon.github.io/furni/images/cross.svg"
                   className="img-fluid"/>
             </span>
-                            </a>
+                            </Link>
                         </div>
                         {/* End Column 2 */}
                         {/* Start Column 3 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                             <a className="product-item" href="cart.html">
                                 <img
-                                    src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-2.png"
+                                    src="https://themewagon.github.io/furni/images/product-2.png"
                                     className="img-fluid product-thumbnail"
                                 />
                                 <h3 className="product-title">Kruzo Aero Chair</h3>
                                 <strong className="product-price">$78.00</strong>
                                 <span className="icon-cross">
               <img
-                  src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/cross.svg"
+                  src="https://themewagon.github.io/furni/images/cross.svg"
                   className="img-fluid"/>
             </span>
                             </a>
@@ -106,14 +107,14 @@ function HomePage() {
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                             <a className="product-item" href="cart.html">
                                 <img
-                                    src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-3.png"
+                                    src="https://themewagon.github.io/furni/images/product-3.png"
                                     className="img-fluid product-thumbnail"
                                 />
                                 <h3 className="product-title">Ergonomic Chair</h3>
                                 <strong className="product-price">$43.00</strong>
                                 <span className="icon-cross">
               <img
-                  src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/cross.svg"
+                  src="https://themewagon.github.io/furni/images/cross.svg"
                   className="img-fluid"/>
             </span>
                             </a>
@@ -138,7 +139,7 @@ function HomePage() {
                                     <div className="feature">
                                         <div className="icon">
                                             <img
-                                                src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/truck.svg"
+                                                src="https://themewagon.github.io/furni/images/truck.svg"
                                                 alt="Image"
                                                 className="imf-fluid"
                                             />
@@ -154,7 +155,7 @@ function HomePage() {
                                     <div className="feature">
                                         <div className="icon">
                                             <img
-                                                src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/bag.svg"
+                                                src="https://themewagon.github.io/furni/images/bag.svg"
                                                 alt="Image" className="imf-fluid"/>
                                         </div>
                                         <h3>Thuận tiện mua sắm </h3>
@@ -168,7 +169,7 @@ function HomePage() {
                                     <div className="feature">
                                         <div className="icon">
                                             <img
-                                                src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/support.svg"
+                                                src="https://themewagon.github.io/furni/images/support.svg"
                                                 alt="Image"
                                                 className="imf-fluid"
                                             />
@@ -184,7 +185,7 @@ function HomePage() {
                                     <div className="feature">
                                         <div className="icon">
                                             <img
-                                                src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/return.svg"
+                                                src="https://themewagon.github.io/furni/images/return.svg"
                                                 alt="Image"
                                                 className="imf-fluid"
                                             />
@@ -201,7 +202,7 @@ function HomePage() {
                         <div className="col-lg-5">
                             <div className="img-wrap">
                                 <img
-                                    src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/why-choose-us-img.jpg"
+                                    src="https://themewagon.github.io/furni/images/why-choose-us-img.jpg"
                                     alt="Image"
                                     className="img-fluid"
                                 />
@@ -219,17 +220,17 @@ function HomePage() {
                             <div className="imgs-grid">
                                 <div className="grid grid-1">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/img-grid-1.jpg"
+                                        src="https://themewagon.github.io/furni/images/img-grid-1.jpg"
                                         alt="Untree.co"/>
                                 </div>
                                 <div className="grid grid-2">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/img-grid-2.jpg"
+                                        src="https://themewagon.github.io/furni/images/img-grid-2.jpg"
                                         alt="Untree.co"/>
                                 </div>
                                 <div className="grid grid-3">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/img-grid-3.jpg"
+                                        src="https://themewagon.github.io/furni/images/img-grid-3.jpg"
                                         alt="Untree.co"/>
                                 </div>
                             </div>
@@ -270,7 +271,7 @@ function HomePage() {
                             <div className="product-item-sm d-flex">
                                 <div className="thumbnail">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-1.png"
+                                        src="https://themewagon.github.io/furni/images/product-1.png"
                                         alt="Image"
                                         className="img-fluid"
                                     />
@@ -290,7 +291,7 @@ function HomePage() {
                             <div className="product-item-sm d-flex">
                                 <div className="thumbnail">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-2.png"
+                                        src="https://themewagon.github.io/furni/images/product-2.png"
                                         alt="Image"
                                         className="img-fluid"
                                     />
@@ -310,7 +311,7 @@ function HomePage() {
                             <div className="product-item-sm d-flex">
                                 <div className="thumbnail">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/product-3.png"
+                                        src="https://themewagon.github.io/furni/images/product-3.png"
                                         alt="Image"
                                         className="img-fluid"
                                     />

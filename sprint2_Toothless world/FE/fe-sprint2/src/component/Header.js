@@ -10,7 +10,7 @@ function Header(props) {
             <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark "
                  arial-label="Furni navigation bar">
                 <div className="container">
-                    <Link className="navbar-brand"  to="/homepage">
+                    <Link className="navbar-brand"  to="/">
                         Black wood<span>.</span>
                     </Link>
                     <button
@@ -27,7 +27,7 @@ function Header(props) {
                     <div className="collapse navbar-collapse" id="navbarsFurni">
                         <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/homepage" >
+                                <Link className="nav-link" to="/" >
                                     Trang chủ
                                 </Link>
                             </li>
@@ -51,13 +51,13 @@ function Header(props) {
                             <li>
                                 <Link className="nav-link" to="/login">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/user.svg"/>
+                                        src="https://themewagon.github.io/furni/images/user.svg"/>
                                 </Link>
                             </li>
                             <li>
                                 <Link className="nav-link"  to="/cart">
                                     <img
-                                        src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/cart.svg"/>
+                                        src="https://themewagon.github.io/furni/images/cart.svg"/>
                                 </Link>
                             </li>
                         </ul>

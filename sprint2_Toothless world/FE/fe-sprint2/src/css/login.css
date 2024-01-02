@@ -14,13 +14,6 @@ Description: This Template is created for Youtubers
     width: 0;
 
 }
-.bg-primary {
-    background-color: #8119f5 !important;
-}
-
-.text-primary {
-    color: #8119f5;
-}
 
 /* ===================================== Basic CSS ==================================== */
 * {
@@ -263,39 +256,8 @@ body {
 }
 
 .btn-primary {
-    background-color: #8119f5;
-    border-color: #8119f5;
-}
-.btn-primary:hover {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-}
-.btn-primary:active {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-}
-.btn-primary:focus {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-    box-shadow: none !important;
-}
-
-.btn-outline-primary {
-    border-color: #8119f5;
-    color: #8119f5;
-}
-.btn-outline-primary:hover {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-}
-.btn-outline-primary:active {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-}
-.btn-outline-primary:focus {
-    background-color: #8119f5 !important;
-    border-color: #8119f5 !important;
-    box-shadow: none !important;
+    background-color: #51be78;
+    border-color: #51be78;
 }
 
 .form-control:focus {

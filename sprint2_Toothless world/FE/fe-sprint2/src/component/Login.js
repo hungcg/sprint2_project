@@ -16,7 +16,7 @@ function Login() {
                     <div className="col-lg-6 p  vh-100">
                         <div className="row d-flex vh-100" style={{backgroundColor:"#f5f8fc"}}>
                             <div className="col-md-7 p-4 ikigui m-auto text-center align-items-center">
-                                <h4 className="text-center fw-bolder mb-4 fs-2">Chào mừng quay trở lại !</h4>
+                                <h4 className="text-center fw-bolder mb-4 fs-2">Chào mừng trở lại !</h4>
                                 <div className="input-group mb-4">
             <span
                 className="input-group-text border-end-0 inbg"

@@ -9,7 +9,7 @@ function Footer() {
                 <div className="container relative">
                     <div className="sofa-img">
                         <img
-                            src="http://localhost:63342/furni-1.0.0/sprint2_Toothless%20world/templates/furni-1.0.0/images/sofa.png"
+                            src="https://themewagon.github.io/furni/images/sofa.png"
                             alt="Image" className="img-fluid"/>
                     </div>
                     <div className="row">

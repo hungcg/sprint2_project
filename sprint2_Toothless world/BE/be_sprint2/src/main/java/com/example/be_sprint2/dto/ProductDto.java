@@ -6,6 +6,8 @@ public interface ProductDto {
     String getDescription();
     String getCategoryName();
     String getSizeName();
+    String getSizePrice();
     String getSizeDescription();
     String getImageName();
+
 }

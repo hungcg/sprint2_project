@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../css/homepage.css"
 import "../css/bootstrap.min.css"
-import {Link} from "react-router-dom"
-import login from "./Login";
+import { Link, NavLink, useLocation } from "react-router-dom"
+import { infoToken } from "../service/AuthService";
+import ModalLogout from "../auth/modal/ModalLogout";
 
-function Header(props) {
+function Header() {
+    const location = useLocation();
+
+    const isActive = (path) => {
+        return location.pathname === path;
+    }
+
+    const [user, setUser] = useState(localStorage.getItem("user"));
+    const [username, setUsername] = useState("");
+
+    const inforUser = async () => {
+        const res = infoToken();
+        if (res != null) {
+            setUsername(res.sub)
+        }
+    }
+
+    useEffect(() => {
+        inforUser()
+    }, []);
+
     return (
         <>
             <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark "
-                 arial-label="Furni navigation bar">
+                 aria-label="Furni navigation bar">
                 <div className="container">
-                    <Link className="navbar-brand"  to="/">
+                    <Link className="navbar-brand" to="/">
                         Black wood<span>.</span>
                     </Link>
                     <button
@@ -26,41 +47,54 @@ function Header(props) {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarsFurni">
                         <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                            <li className="nav-item active">
-                                <Link className="nav-link" to="/" >
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/" isActive={() => isActive("/")}>
                                     Trang chủ
-                                </Link>
+                                </NavLink>
                             </li>
-                            <li>
-                                <Link className="nav-link"  to="/shop">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/shop" isActive={() => isActive("/shop")}>
                                     Cửa hàng
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link className="nav-link"  to="blog">
+                                <NavLink className="nav-link" to="/blog" isActive={() => isActive("/blog")}>
                                     Blog
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link className="nav-link"  to="contact">
+                                <NavLink className="nav-link" to="/contact" isActive={() => isActive("/contact")}>
                                     Liên hệ
-                                </Link>
+                                </NavLink>
                             </li>
                         </ul>
-                        <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                        <div className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                             <li>
-                                <Link className="nav-link" to="/login">
-                                    <img
-                                        src="https://themewagon.github.io/furni/images/user.svg"/>
+                                <Link className="nav-link" to="/cart">
+                                    <img src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/>
                                 </Link>
                             </li>
                             <li>
-                                <Link className="nav-link"  to="/cart">
-                                    <img
-                                        src="https://themewagon.github.io/furni/images/cart.svg"/>
-                                </Link>
+                                {!user ? (
+                                    <Link className="nav-link" to="/login">
+                                        <img src="https://themewagon.github.io/furni/images/user.svg" alt="Login"/>
+                                    </Link>
+                                ) : (
+                                    <div className="nav-link text-light align-text-bottom d-flex ">
+                                        <p style={{
+                                            margin: "0 10px",
+                                            fontWeight: "500",
+                                            fontSize: "18px"
+                                        }}>{username}
+                                        </p>
+                                        <Link role="button" data-bs-toggle="modal" data-bs-target="#logout">
+                                            <i className="fa-solid fa-right-from-bracket text-light"></i>
+                                        </Link>
+                                        <ModalLogout/>
+                                    </div>
+                                )}
                             </li>
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

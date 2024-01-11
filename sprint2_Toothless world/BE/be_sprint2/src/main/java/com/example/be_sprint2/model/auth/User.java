@@ -32,12 +32,6 @@ public class User {
     @Column(name = "address", columnDefinition = "VARCHAR(255)")
     private String address;
 
-    @Column(name = "username", columnDefinition = "VARCHAR(50)", unique = true)
-    private String username;
-
-    @Column(name = "password", columnDefinition = "VARCHAR(255)")
-    private String password;
-
     @OneToOne
     @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;

@@ -58,7 +58,7 @@ a {
     transition: .3s all ease;
     position: relative; }
     @media (min-width: 768px) {
-      .custom-navbar .custom-navbar-nav li a:before {
+      .custom-navbar .custom-navbar-nav  li a:before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -67,11 +67,22 @@ a {
         background: #f9bf29;
         height: 5px;
         opacity: 1;
-        visibility: visible;
         width: 0;
         -webkit-transition: .15s all ease-out;
         -o-transition: .15s all ease-out;
-        transition: .15s all ease-out; } }
+        transition: .15s all ease-out; }}
+
+      /* Thêm kiểu cho NavLink được kích hoạt */
+      .custom-navbar .custom-navbar-nav li a.active:before {
+        width: 80%;
+        visibility: visible;
+        background:#f9bf29; /* Thay thế 'yourColor' bằng màu sắc mong muốn */
+      }
+
+/* Trong file CSS của bạn (ví dụ: homepage.css) */
+
+
+
     .custom-navbar .custom-navbar-nav li a:hover {
       opacity: 1; }
       .custom-navbar .custom-navbar-nav li a:hover:before {
@@ -98,65 +109,65 @@ a {
 .hero {
   background: #3b5d50;
   padding: calc(4rem - 30px) 0 0rem 0; }
-  @media (min-width: 768px) {
-    .hero {
-      padding: calc(4rem - 30px) 0 4rem 0; } }
-  @media (min-width: 992px) {
-    .hero {
-      padding: calc(8rem - 30px) 0 8rem 0; } }
-  .hero .intro-excerpt {
-    position: relative;
-    z-index: 4; }
+    @media (min-width: 768px) {
+      .hero {
+        padding: calc(4rem - 30px) 0 4rem 0; } }
     @media (min-width: 992px) {
-      .hero .intro-excerpt {
-        max-width: 450px; } }
-  .hero h1 {
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 30px; }
-    @media (min-width: 1400px) {
-      .hero h1 {
-        font-size: 54px; } }
-  .hero p {
-    color: rgba(255, 255, 255, 0.5);
-    margin-botom: 30px; }
-  .hero .hero-img-wrap {
-    position: relative; }
-    .hero .hero-img-wrap img {
+      .hero {
+        padding: calc(8rem - 30px) 0 8rem 0; } }
+    .hero .intro-excerpt {
       position: relative;
-      top: 0px;
-      right: 0px;
-      z-index: 2;
-      max-width: 780px;
-      left: -20px; }
-      @media (min-width: 768px) {
-        .hero .hero-img-wrap img {
-          right: 0px;
-          left: -100px; } }
+      z-index: 4; }
       @media (min-width: 992px) {
-        .hero .hero-img-wrap img {
-          left: 0px;
-          top: -80px;
-          position: absolute;
-          right: -50px; } }
-      @media (min-width: 1200px) {
-        .hero .hero-img-wrap img {
-          left: 0px;
-          top: -80px;
-          right: -100px; } }
-    .hero .hero-img-wrap:after {
-      content: "";
-      position: absolute;
-      width: 255px;
-      height: 217px;
-      background-image: url("../../public/images/dots-light.svg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      right: -100px;
-      top: -0px; }
-      @media (min-width: 1200px) {
-        .hero .hero-img-wrap:after {
-          top: -40px; } }
+        .hero .intro-excerpt {
+          max-width: 450px; } }
+    .hero h1 {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 30px; }
+      @media (min-width: 1400px) {
+        .hero h1 {
+          font-size: 54px; } }
+    .hero p {
+      color: rgba(255, 255, 255, 0.5);
+      margin-botom: 30px; }
+    .hero .hero-img-wrap {
+      position: relative; }
+      .hero .hero-img-wrap img {
+        position: relative;
+        top: 0px;
+        right: 0px;
+        z-index: 2;
+        max-width: 780px;
+        left: -20px; }
+        @media (min-width: 768px) {
+          .hero .hero-img-wrap img {
+            right: 0px;
+            left: -100px; } }
+        @media (min-width: 992px) {
+          .hero .hero-img-wrap img {
+            left: 0px;
+            top: -80px;
+            position: absolute;
+            right: -50px; } }
+        @media (min-width: 1200px) {
+          .hero .hero-img-wrap img {
+            left: 0px;
+            top: -80px;
+            right: -100px; } }
+      .hero .hero-img-wrap:after {
+        content: "";
+        position: absolute;
+        width: 255px;
+        height: 217px;
+        background-image: url("../../public/images/dots-light.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        right: -100px;
+        top: -0px; }
+        @media (min-width: 1200px) {
+          .hero .hero-img-wrap:after {
+            top: -40px; } }
 
 .btn {
   font-weight: 600;
@@ -709,3 +720,43 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+
+#myBtn {
+
+  position: fixed;
+  display: none;
+  bottom: 50px;
+  right: 50px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+#myBtn:hover {
+  background-color: #3b5d50;
+}
+
+
+.product-item img {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  place-self: center;
+  border-radius: 15px;
+  margin-top: -5px;
+}
+
+.shop {
+  background: #3b5d50;
+  padding: calc(4rem - 30px) 0 0rem 0; }
+
+
+.content-title {
+  font-size: 2.3rem;
+  color: #3b5d50;
+  text-align: center;
+  margin-bottom: 50px;
+}

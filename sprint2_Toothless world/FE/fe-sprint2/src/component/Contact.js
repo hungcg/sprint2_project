@@ -61,7 +61,7 @@ function Contact(props) {
                                             </div>{" "}
                                             {/* /.icon */}
                                             <div className="service-contents">
-                                                <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                                                <p>280 Đ. Trần Hưng Đạo, An Hải Bắc, Sơn Trà, Đà Nẵng 550000</p>
                                             </div>{" "}
                                             {/* /.service-contents*/}
                                         </div>{" "}
@@ -123,49 +123,12 @@ function Contact(props) {
                                         {/* /.service */}
                                     </div>
                                 </div>
-                                <form>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <div className="form-group">
-                                                <label className="text-black" htmlFor="fname">
-                                                    First name
-                                                </label>
-                                                <input type="text" className="form-control" id="fname" />
-                                            </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div className="form-group">
-                                                <label className="text-black" htmlFor="lname">
-                                                    Last name
-                                                </label>
-                                                <input type="text" className="form-control" id="lname" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="text-black" htmlFor="email">
-                                            Email address
-                                        </label>
-                                        <input type="email" className="form-control" id="email" />
-                                    </div>
-                                    <div className="form-group mb-5">
-                                        <label className="text-black" htmlFor="message">
-                                            Message
-                                        </label>
-                                        <textarea
-                                            name=""
-                                            className="form-control"
-                                            id="message"
-                                            cols={30}
-                                            rows={5}
-                                            defaultValue={""}
-                                        />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary-hover-outline">
-                                        Send Message
-                                    </button>
-                                </form>
                             </div>
+
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.208369717407!2d108.22979027465618!3d16.054673439828335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219d6d6355dfd%3A0xab74f1d886dbff0e!2zMjgwIMSQLiBUcuG6p24gSMawbmcgxJDhuqFvLCBBbiBI4bqjaSBC4bqvYywgU8ahbiBUcsOgLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1704957880537!5m2!1svi!2s"
+                                width="600" height="450" allowFullScreen="false" loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

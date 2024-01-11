@@ -1,0 +1,19 @@
+#pagination .btn{
+    width: unset;
+    width: 40px;
+    border: unset;
+    border: 1px  solid darkgrey;
+    margin: 0 5px;
+    border-radius: 40px;
+}
+
+#pagination .btn.active{
+    /*border: 1px solid black;*/
+    transform: scale(1.1);
+    background-color:  #3b5d50;
+}
+
+#pagination .btn:hover{
+    /*border: 1px solid black;*/
+    transform: scale(1.1);
+}

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import "../css/homepage.css"
-import "../css/bootstrap.min.css"
-import { Link, NavLink, useLocation } from "react-router-dom"
+import "../css/homepage.css";
+import "../css/bootstrap.min.css";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { infoToken } from "../service/AuthService";
 import ModalLogout from "../auth/modal/ModalLogout";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartFromAPI } from "../redux/actions/CartAction";
 
 function Header() {
     const location = useLocation();
-
-    const isActive = (path) => {
-        return location.pathname === path;
-    }
+    const cartInit = useSelector((state) => state.cart.productArr);
+    const dispatch = useDispatch();
 
     const [user, setUser] = useState(localStorage.getItem("user"));
     const [username, setUsername] = useState("");
@@ -18,18 +18,18 @@ function Header() {
     const inforUser = async () => {
         const res = infoToken();
         if (res != null) {
-            setUsername(res.sub)
+            setUsername(res.sub);
         }
     }
 
     useEffect(() => {
-        inforUser()
+        dispatch(getCartFromAPI());
+        inforUser();
     }, []);
 
     return (
         <>
-            <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark "
-                 aria-label="Furni navigation bar">
+            <nav className="custom-navbar navbar navbar-expand-md navbar-dark" aria-label="Furni navigation bar">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
                         Black wood<span>.</span>
@@ -48,52 +48,43 @@ function Header() {
                     <div className="collapse navbar-collapse" id="navbarsFurni">
                         <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/" isActive={() => isActive("/")}>
+                                <NavLink className="nav-link" to="/" exact="true">
                                     Trang chủ
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/shop" isActive={() => isActive("/shop")}>
+                                <NavLink className="nav-link" to="/shop">
                                     Cửa hàng
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink className="nav-link" to="/blog" isActive={() => isActive("/blog")}>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/blog">
                                     Blog
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink className="nav-link" to="/contact" isActive={() => isActive("/contact")}>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/contact">
                                     Liên hệ
                                 </NavLink>
                             </li>
                         </ul>
                         <div className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                            <li>
-                                <Link className="nav-link" to="/cart">
-                                    <img src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/>
+                            {!user ? (
+                                <Link className="nav-link" to="/login">
+                                    <img src="https://themewagon.github.io/furni/images/user.svg" alt="Login"/>
                                 </Link>
-                            </li>
-                            <li>
-                                {!user ? (
-                                    <Link className="nav-link" to="/login">
-                                        <img src="https://themewagon.github.io/furni/images/user.svg" alt="Login"/>
+                            ) : (
+                                <div className="nav-link text-light d-flex">
+                                    <Link className="nav-link" to="/cart">
+                                        <img src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/>
                                     </Link>
-                                ) : (
-                                    <div className="nav-link text-light align-text-bottom d-flex ">
-                                        <p style={{
-                                            margin: "0 10px",
-                                            fontWeight: "500",
-                                            fontSize: "18px"
-                                        }}>{username}
-                                        </p>
-                                        <Link role="button" data-bs-toggle="modal" data-bs-target="#logout">
-                                            <i className="fa-solid fa-right-from-bracket text-light"></i>
-                                        </Link>
-                                        <ModalLogout/>
-                                    </div>
-                                )}
-                            </li>
+                                    <p style={{ margin: "0 10px", fontWeight: "500", fontSize: "18px" }}>{username}</p>
+                                    <Link role="button" data-bs-toggle="modal" data-bs-target="#logout">
+                                        <i className="fa-solid fa-right-from-bracket text-light"></i>
+                                    </Link>
+                                    <ModalLogout />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

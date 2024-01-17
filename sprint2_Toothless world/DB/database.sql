@@ -2,14 +2,27 @@ SELECT * FROM sprint2_project.size;
 use sprint2_project;
 
 
-INSERT INTO accounts (password, username)
-VALUES ('123123', 'hunghaha');
 
-
+-- Insert into role table
 INSERT INTO role (name)
 VALUES
  ('ROLES_ADMIN'),
  ('ROLES_USER');
+
+INSERT INTO accounts (password, username)
+VALUES 
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha'),
+('123123', 'hunghaha');
 
 INSERT INTO account_roles (account_id, role_id)
 VALUES (1, 1);
@@ -17,20 +30,55 @@ VALUES (1, 1);
 
 
 
-INSERT INTO product (description, name)
-VALUES
-('Product 1 Description', 'Product 1'),
-('Product 2 Description', 'Product 2'),
-('Product 3 Description', 'Product 3'),
-('Product 4 Description', 'Product 4'),
-('Product 5 Description', 'Product 5'),
-('Product 6 Description', 'Product 6'),
-('Product 7 Description', 'Product 7'),
-('Product 8 Description', 'Product 8'),
-('Product 9 Description', 'Product 9'),
-('Product 10 Description', 'Product 10');
+-- Insert into user table
+INSERT INTO user (account_id, address, birthday, email, gender, name, phone) VALUES 
+  (1, 'Address1', '1990-01-01', 'email1@example.com', 'Male', 'John Doe', '1234567890'),
+  (2, 'Address2', '1991-02-02', 'email2@example.com', 'Female', 'Jane Doe', '2345678901'),
+  (3, 'Address3', '1992-03-03', 'email3@example.com', 'Male', 'Bob Smith', '3456789012'),
+  (4, 'Address4', '1993-04-04', 'email4@example.com', 'Female', 'Alice Johnson', '4567890123'),
+  (5, 'Address5', '1994-05-05', 'email5@example.com', 'Male', 'Sam Wilson', '5678901234'),
+  (6, 'Address6', '1995-06-06', 'email6@example.com', 'Female', 'Emily White', '6789012345'),
+  (7, 'Address7', '1996-07-07', 'email7@example.com', 'Male', 'Chris Brown', '7890123456'),
+  (8, 'Address8', '1997-08-08', 'email8@example.com', 'Female', 'Jessica Green', '8901234567'),
+  (9, 'Address9', '1998-09-09', 'email9@example.com', 'Male', 'Megan Taylor', '9012345678'),
+  (10, 'Address10', '1999-10-10', 'email10@example.com', 'Female', 'Daniel Davis', '0123456789');
+  
+  
+-- Insert into product table for Sofas
+INSERT INTO product (description, name) VALUES 
+  ('Modern Leather Sofa', 'Elegant White Sofa'),
+  ('Sectional Sofa', 'Gray Fabric Sectional'),
+  ('Classic Sofa', 'Vintage Brown Leather Sofa'),
+  ('Convertible Sofa', 'Multifunctional Gray Sofa'),
+  ('L-Shaped Sofa', 'Contemporary Black L-Shaped Sofa'),
+  ('Reclining Sofa', 'Comfortable Beige Recliner Sofa'),
+  ('Chaise Lounge Sofa', 'Modern Chaise Lounge Sofa'),
+  ('Velvet Sofa', 'Luxurious Emerald Green Velvet Sofa'),
+  ('Outdoor Sofa', 'Weather-resistant Patio Sofa'),
+  ('Sleeper Sofa', 'Compact Blue Sleeper Sofa');
 
-INSERT INTO image (product_id, name)
+
+-- Assuming you have the product IDs for the sofa products
+-- Replace the values of product_id with the actual IDs from your product table
+
+-- Insert into category table for Sofa categories
+INSERT INTO category (product_id, name) VALUES 
+  (1, 'Elegant Sofas'),
+  (2, 'Sectional Sofas'),
+  (3, 'Classic Sofas'),
+  (4, 'Convertible Sofas'),
+  (5, 'L-Shaped Sofas'),
+  (6, 'Reclining Sofas'),
+  (7, 'Chaise Lounge Sofas'),
+  (8, 'Velvet Sofas'),
+  (9, 'Outdoor Sofas'),
+  (10, 'Sleeper Sofas');
+
+  
+  
+
+  
+  INSERT INTO image (product_id, name)
 VALUES
 (1, 'https://i.pinimg.com/236x/8b/6a/53/8b6a5316a3a3a327bd0280b0033a2134.jpg'),
 (2, 'https://i.pinimg.com/236x/d5/81/be/d581be2ba1405243e9bdbe1816756a03.jpg'),
@@ -44,96 +92,112 @@ VALUES
 (10, 'https://i.pinimg.com/236x/f1/43/45/f143453d7ea6ad8b7fe37f34e91cdd64.jpg');
 
 
-
-INSERT INTO Size (name, status, description, quantity, price, product_id)
-VALUES 
-('Size 1', true, 'Description for Size 1', 10, 20.0, 1),
-('Size 2', true, 'Description for Size 2', 20, 40.0, 2),
-('Size 3', true, 'Description for Size 3', 30, 60.0, 3),
-('Size 4', true, 'Description for Size 4', 40, 80.0, 4),
-('Size 5', true, 'Description for Size 5', 50, 100.0, 5),
-('Size 6', true, 'Description for Size 6', 60, 120.0, 6),
-('Size 7', true, 'Description for Size 7', 70, 140.0, 7),
-('Size 8', true, 'Description for Size 8', 80, 160.0, 8),
-('Size 9', true, 'Description for Size 9', 90, 180.0, 9),
-('Size 10', true, 'Description for Size 10', 90, 180.0, 10);
-
-
-
-INSERT INTO category (description, name)
-VALUES
-( 'Category 1 Description', 'Category 1'),
-( 'Category 2 Description', 'Category 2'),
-( 'Category 3 Description', 'Category 3'),
-( 'Category 4 Description', 'Category 4'),
-( 'Category 5 Description', 'Category 5'),
-( 'Category 6 Description', 'Category 6'),
-( 'Category 7 Description', 'Category 7'),
-( 'Category 8 Description', 'Category 8'),
-( 'Category 9 Description', 'Category 9'),
-( 'Category 10 Description', 'Category 10');
+-- Insert into size table with prices in VND (between 1 million and 10 million)
+INSERT INTO size (price, quantity, status, product_id, name) VALUES 
+  (5000000, 50, 1, 1, 'Large Sofa'),
+  (1500000, 100, 1, 2, 'Medium Sofa'),
+  (2500000, 30, 1, 3, 'Hardcover Sofa'),
+  (3500000, 20, 1, 4, 'Small Sofa'),
+  (9000000, 200, 1, 5, 'L-Shaped Sectional Sofa'),
+  (4500000, 50, 1, 6, '3-Seater Sofa'),
+  (8000000, 80, 1, 7, 'Matte Finish Sofa'),
+  (3500000, 40, 1, 8, '5W-30 Oil'),
+  (7000000, 10, 1, 9, 'Standard Sofa'),
+  (9500000, 5, 1, 10, 'Double Door Sofa');
 
 
 
-INSERT INTO category_detail (category_id, product_id)
-VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(1, 4),
-(2, 5),
-(3, 6),
-(1, 7),
-(2, 8),
-(3, 9),
-(1, 10);
 
+-- Insert into cart table
+INSERT INTO cart (is_deleted, quantity_order, product_id, user_id) VALUES 
+  (0, 2, 1, 1),
+  (0, 1, 2, 2),
+  (0, 3, 3, 3),
+  (0, 1, 4, 4),
+  (0, 2, 5, 5),
+  (0, 1, 6, 6),
+  (0, 2, 7, 7),
+  (0, 1, 8, 8),
+  (0, 3, 9, 9),
+  (0, 1, 10, 10);
 
-INSERT INTO user (account_id, address, birthday, email, gender, name, password, phone, username)
-VALUES
-(1, '123 Main St', '1990-01-01', 'user1@example.com', 'Male', 'John Doe', 'password1', '1234567890', 'john_doe'),
-(2, '456 Oak St', '1985-02-15', 'user2@example.com', 'Female', 'Jane Smith', 'password2', '9876543210', 'jane_smith'),
-(3, '789 Elm St', '1992-07-20', 'user3@example.com', 'Male', 'Mike Johnson', 'password3', '5555555555', 'mike_johnson'),
-(4, '101 Pine St', '1988-11-10', 'user4@example.com', 'Female', 'Emily Davis', 'password4', '3333333333', 'emily_davis'),
-(5, '202 Cedar St', '1995-04-05', 'user5@example.com', 'Male', 'Alex White', 'password5', '9999999999', 'alex_white'),
-(6, '303 Birch St', '1980-09-30', 'user6@example.com', 'Female', 'Chris Brown', 'password6', '7777777777', 'chris_brown'),
-(7, '404 Maple St', '1998-12-15', 'user7@example.com', 'Male', 'Jessica Lee', 'password7', '1111111111', 'jessica_lee'),
-(8, '505 Walnut St', '1983-06-25', 'user8@example.com', 'Female', 'David Taylor', 'password8', '4444444444', 'david_taylor'),
-(9, '606 Pineapple St', '1993-03-20', 'user9@example.com', 'Male', 'Sophia Martin', 'password9', '6666666666', 'sophia_martin'),
-(10, '707 Banana St', '1987-08-10', 'user10@example.com', 'Female', 'Andrew Wilson', 'password10', '8888888888', 'andrew_wilson');
+-- Insert into orders table
+INSERT INTO orders (total_money, date_of_order, user_id) VALUES 
+  (1599.98, '2024-01-12 10:00:00', 1),
+  (39.99, '2024-01-12 11:30:00', 2),
+  (89.97, '2024-01-12 13:15:00', 3),
+  (39.99, '2024-01-12 14:45:00', 4),
+  (19.98, '2024-01-12 16:20:00', 5),
+  (99.98, '2024-01-12 17:45:00', 6),
+  (29.98, '2024-01-12 19:00:00', 7),
+  (59.98, '2024-01-12 20:30:00', 8),
+  (2399.97, '2024-01-12 21:45:00', 9),
+  (999.99, '2024-01-12 23:00:00', 10);
 
-
-SELECT 
-    p.id as productId, 
-    p.name as name, 
-    p.description as description, 
-    c.name as categoryName, 
-    s.name as sizeName, 
-    s.description as sizeDescription, 
-    s.price as sizePrice,
-    i.name as imageName
-FROM product as p
-LEFT JOIN category_detail as cd ON p.id = cd.product_id
-LEFT JOIN category as c ON cd.category_id = c.id
-LEFT JOIN size as s ON p.id = s.product_id
-LEFT JOIN image as i ON p.id = i.product_id;
+-- Insert into order_detail table
+INSERT INTO order_detail (price_order, quantity, order_id, product_id) VALUES 
+  (799.99, 2, 1, 1),
+  (19.99, 1, 2, 2),
+  (29.99, 3, 3, 3),
+  (39.99, 1, 4, 4),
+  (9.99, 2, 5, 5),
+  (49.99, 1, 6, 6),
+  (14.99, 2, 7, 7),
+  (29.99, 1, 8, 8),
+  (799.99, 3, 9, 9),
+  (999.99, 1, 10, 10);
 
 
 
-SELECT 
-    p.id as productId, 
-    p.name as name, 
-    p.description as description, 
-    c.name as categoryName, 
-    s.name as sizeName, 
-    s.description as sizeDescription, 
-    s.price as sizePrice,
-    i.name as imageName
-FROM product as p
-LEFT JOIN category_detail as cd ON p.id = cd.product_id
-LEFT JOIN category as c ON cd.category_id = c.id
-LEFT JOIN size as s ON p.id = s.product_id
-LEFT JOIN image as i ON p.id = i.product_id
-WHERE s.price BETWEEN 0 AND 40 -- Thay min_price và max_price bằng giá trị tương ứng
-    AND (s.name LIKE '%a%' OR c.name LIKE '%a%' OR p.name LIKE '%a%');
+
+
+
+
+
+
+
+SELECT
+    p.id AS product_id,
+    p.name AS product_name,
+    p.description,
+    c.name AS category_name,
+    s.name AS size_name,
+    s.price AS size_price,
+    i.name AS image_name
+FROM product p
+JOIN category c ON p.id = c.product_id
+JOIN size s ON p.id = s.product_id
+LEFT JOIN image i ON p.id = i.product_id
+WHERE p.name LIKE '%%' AND c.name LIKE '%%' AND s.name LIKE '%%' AND s.price BETWEEN 0 AND 100000000; 
+
+
+-- SELECT 
+--     cart.id AS cart_item_id,
+--     cart.quantity_order,
+--     product.id AS product_id,
+--     product.name AS product_name,
+--     product.description AS product_description,
+--     size.name AS size_name,
+--     size.price AS size_price,
+--     image.name AS image_name,
+--     user.name AS user_name,
+--     user.phone AS user_phone,
+--     user.address AS user_address
+-- FROM 
+--     cart
+-- JOIN 
+--     product ON cart.product_id = product.id
+-- JOIN 
+--     size ON cart.product_id = size.product_id
+-- LEFT JOIN 
+--     image ON cart.product_id = image.product_id
+-- JOIN 
+--     user ON cart.user_id = user.id
+-- WHERE 
+--     cart.user_id = 1
+--     AND cart.is_deleted = 0;
+--     
+--     INSERT INTO Cart (user_id, product_id, quantity_order, is_deleted)
+-- VALUES (:userId, :productId, :quantityOrder, false);
+
 

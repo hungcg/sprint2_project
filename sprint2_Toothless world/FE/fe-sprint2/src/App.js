@@ -13,18 +13,14 @@ import Shop from "./component/Shop";
 import Blog from "./component/Blog";
 import Contact from "./component/Contact";
 import Detail from "./component/Detail";
-import store from "./redux/Store";
-import {Provider} from "react-redux";
-
 
 function App() {
     return (
         <>
-            <Provider store={store}>
             <BrowserRouter>
                 <Header/>
                 <Routes>
-                   < Route path="/" element={<HomePage/>}></Route>
+                    < Route path="/" element={<HomePage/>}></Route>
                     <Route path="/login" element={<Login/>}></Route>
                     <Route path="/cart" element={<Cart/>}></Route>
                     <Route path="/detail" element={<Detail/>}></Route>
@@ -35,8 +31,6 @@ function App() {
                 <Footer/>
             </BrowserRouter>
             <ToastContainer/>
-            </Provider>
-
         </>
     );
 }

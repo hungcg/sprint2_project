@@ -1,6 +1,7 @@
 package com.example.be_sprint2.service;
 import com.example.be_sprint2.model.product.Category;
 import com.example.be_sprint2.repository.ICategoryRepository;
+import com.example.be_sprint2.service.impl.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

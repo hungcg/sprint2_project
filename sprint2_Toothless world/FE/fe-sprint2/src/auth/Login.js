@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
-import {loginUser} from "../redux/middlewares/AuthMiddleware";
+import {loginUser} from "../redux/actions/AuthAction";
 import {useDispatch} from "react-redux";
 import * as Yup from "yup";
 
@@ -26,8 +26,8 @@ export function Login() {
         try {
             setDisableSubmit(true);
             await dispatch(loginUser(values));
-            navigate("/");
             toast.success("Đăng nhập thành công !");
+            window.location.href="/";
         } catch (e) {
             setDisableSubmit(false);
             setFieldError("password", e.data);

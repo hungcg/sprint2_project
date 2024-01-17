@@ -1,10 +1,6 @@
 package com.example.be_sprint2.model.product;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 public class Size {
@@ -13,7 +9,6 @@ public class Size {
     private Long id;
     private String name;
     private Boolean status;
-    private String description;
     private Integer quantity;
     private Double price;
     @ManyToOne
@@ -47,13 +42,6 @@ public class Size {
         this.status = status;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Integer getQuantity() {
         return quantity;

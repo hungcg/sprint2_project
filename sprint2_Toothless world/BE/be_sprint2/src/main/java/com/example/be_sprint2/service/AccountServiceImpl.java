@@ -1,6 +1,7 @@
 package com.example.be_sprint2.service;
 import com.example.be_sprint2.model.auth.Account;
 import com.example.be_sprint2.repository.IAccountRepository;
+import com.example.be_sprint2.service.impl.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

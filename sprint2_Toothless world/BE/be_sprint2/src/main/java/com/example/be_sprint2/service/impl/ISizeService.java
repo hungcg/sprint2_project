@@ -1,4 +1,4 @@
-package com.example.be_sprint2.service;
+package com.example.be_sprint2.service.impl;
 
 import com.example.be_sprint2.model.product.Category;
 import com.example.be_sprint2.model.product.Size;

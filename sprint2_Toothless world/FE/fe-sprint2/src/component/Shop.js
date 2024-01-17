@@ -5,10 +5,11 @@ import * as service from "../service/ProductService"
 import * as Util from "../service/Util"
 import Pagination from "./Pagination";
 
+
 function Shop() {
     const [product, setProduct] = useState([]);
     const [minPrice, setMinPrice] = useState("0");
-    const [maxPrice, setMaxPrice] = useState("10000");
+    const [maxPrice, setMaxPrice] = useState("1000000000");
     const [category, setCategory] = useState([]);
     const [size, setSize] = useState([]);
     const [sizeName, setSizeName] = useState("");
@@ -26,6 +27,7 @@ function Shop() {
             setProduct(res.data.content);
             setTotalPages(res.data.totalPages);
             console.log(res.data.content)
+            console.log(res.data.totalPages)
         } catch (e) {
             console.log(e)
         }
@@ -97,13 +99,14 @@ function Shop() {
             {/*    </div>*/}
             {/*</div>*/}
             {/* End Hero Section */}
-
             <div className="untree_co-section product-section before-footer-section pt-5">
                 <div className="row">
                     <div className="col-xxl-2 container">
                         <p className="content-title"><i className="fa-solid fa-sliders"/></p>
                         <hr/>
                         <div className="intro-excerpt">
+                            <input type="text" placeholder="Tìm theo tên" className="form-control"
+                                   onChange={(event) => setProductName(event.target.value)}/>
                             <select className="form-control"
                                     onChange={(event) => setCategoryName(event.target.value)}>
                                 <option value="">Chọn loại sản phẩm</option>
@@ -121,8 +124,7 @@ function Shop() {
                                             value={size.name}>{size.name}</option>
                                 ))}
                             </select>
-                            <input type="text" placeholder="Tìm theo tên" className="form-control"
-                                   onChange={(event) => setProductName(event.target.value)}/>
+
                             <input type="number" placeholder="Giá nhỏ nhất" value={minPrice} className="form-control"
                                    onChange={(event) => setMinPrice(event.target.value)}/>
                             <input type="number" placeholder="Giá lớn nhất" value={maxPrice}
@@ -130,7 +132,7 @@ function Shop() {
                                    onChange={(event) => setMaxPrice(event.target.value)}/>
                             <div>
                                 <label htmlFor="customRange3" className="form-label text-light ">Mức giá</label>
-                                <input type="range" className="form-range " min="0" max="200" step="5"
+                                <input type="range" className="form-range " min="0" max="10000000" step="100000"
                                        id="customRange3"
                                        onChange={(event) => setMaxPrice(event.target.value)}/>
                             </div>

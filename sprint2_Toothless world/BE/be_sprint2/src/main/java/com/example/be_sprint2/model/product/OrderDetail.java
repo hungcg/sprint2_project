@@ -1,6 +1,4 @@
 package com.example.be_sprint2.model.product;
-import com.example.be_sprint2.model.product.Order;
-import com.example.be_sprint2.model.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

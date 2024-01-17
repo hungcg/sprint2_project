@@ -13,8 +13,6 @@ export const findAll = async (currentPage,productName,sizeName,categoryName,minP
 
 }
 
-
-
 export const getAllCategory = async () => {
     try {
         let res = await axios.get(`http://localhost:8080/api/product/category`)

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NotFound} from "../NotFound";
-import {getInfoByIdAccount} from "../../redux/middlewares/EmployeeMiddleware";
+import {getInfoByIdAccount} from "../../redux/actions/EmployeeMiddleware";
 import {useDispatch, useSelector} from "react-redux";
 
 function InformationUser() {

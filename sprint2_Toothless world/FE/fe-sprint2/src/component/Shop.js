@@ -4,6 +4,10 @@ import "../css/bootstrap.min.css"
 import * as service from "../service/ProductService"
 import * as Util from "../service/Util"
 import Pagination from "./Pagination";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../redux/actions/CartAction";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 
 function Shop() {
@@ -19,6 +23,11 @@ function Shop() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const dispatch = useDispatch();
+    const existingUser = JSON.parse(localStorage.getItem("user"));
+    const userId = existingUser.id;
+    const flag = userId != null;
+    const navigate = useNavigate();
 
 
     const display = async () => {
@@ -50,6 +59,15 @@ function Shop() {
             setSize(res.data);
         } catch (e) {
             console.log(e)
+        }
+    }
+    const handleAddProductToCart = async () => {
+        if (flag) {
+            dispatch(addToCart(userId, product.productId, 1));
+            toast.success("Thêm vào giỏ hàng thành công!");
+        } else {
+            toast.success("Vui lòng đăng nhập!");
+            navigate("/login");
         }
     }
 
@@ -91,14 +109,6 @@ function Shop() {
 
     return (
         <>
-            {/*<div className="shop">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="row">*/}
-
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/* End Hero Section */}
             <div className="untree_co-section product-section before-footer-section pt-5">
                 <div className="row">
                     <div className="col-xxl-2 container">
@@ -156,7 +166,7 @@ function Shop() {
                                             <h3 className="product-title">{product.categoryName}</h3>
                                             <strong
                                                 className="product-price">{Util.formatCurrency(product.sizePrice)}</strong>
-                                            <span className="icon-cross"><img src="images/cross.svg"
+                                            <span className="icon-cross"><img onClick={handleAddProductToCart} src="images/cross.svg"
                                                                               className="img-fluid"
                                                                               alt=""/></span>
                                         </a>

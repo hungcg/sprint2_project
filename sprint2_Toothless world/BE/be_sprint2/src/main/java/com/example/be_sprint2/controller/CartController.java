@@ -56,7 +56,7 @@ public class CartController {
     }
 
 
-    @GetMapping("/remove/{username}/{productId}/{quantity}")
+    @GetMapping("/remove/{userId}/{productId}/{quantity}")
     public ResponseEntity<?> removeProductsInCart(
             @PathVariable(name = "userId") Integer userId,
             @PathVariable(name = "productId") Integer productId,

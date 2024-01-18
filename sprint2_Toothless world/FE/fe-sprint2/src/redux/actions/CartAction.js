@@ -1,11 +1,14 @@
 import * as cartService from '../../service/CartService';
 import {infoToken} from "../../service/AuthService";
 
+const userId = localStorage.getItem("user");
+
+
 const getCartFromAPI = () => async (dispatch) => {
     try {
         const flag = infoToken() != null;
         if (flag) {
-            const data = await cartService.getCartDetailsByUserId(1);
+            const data = await cartService.getCartDetailsByUserId(userId);
             dispatch({
                 type: GET_CART_FROM_API,
                 payload: data,
@@ -36,34 +39,34 @@ const addToCart = (userId, productId, quantity) => async (dispatch) => {
 };
 
 const minusFromCart = (userId, productId, quantity) => async (dispatch) => {
-    const curCart = await cartService.getCartDetailsByUserId();
-    let curQty = 0;
-    curCart.map(item => {
-        if (item.productId === productId) {
-            curQty = item.quantity;
-        }
-    });
+        const curCart = await cartService.getCartDetailsByUserId();
+        let curQty = 0;
+        curCart.map(item => {
+            if (item.productId === productId) {
+                curQty = item.quantity;
+            }
+        });
 
-    if (curQty > 1) {
-        try {
-            await cartService.minusProductFromCart(userId,
-                productId, quantity);
-            const newCart = await cartService.getCartDetailsByUserId();
+        if (curQty > 1) {
+            try {
+                await cartService.minusProductFromCart(userId,
+                    productId, quantity);
+                const newCart = await cartService.getCartDetailsByUserId();
+                dispatch({
+                    type: MINUS_ITEMS,
+                    payload: newCart,
+                })
+            } catch (err) {
+            }
+        } else {
+            const oldCart = await cartService.getCartDetailsByUserId();
             dispatch({
                 type: MINUS_ITEMS,
-                payload: newCart,
-            })
-        } catch (err) {
-
+                payload: oldCart,
+            });
         }
-    } else {
-        const oldCart = await cartService.getCartDetailsByUserId();
-        dispatch({
-            type: MINUS_ITEMS,
-            payload: oldCart,
-        });
     }
-};
+;
 
 const removeProducts = (userId, productId) => async (dispatch) => {
     try {

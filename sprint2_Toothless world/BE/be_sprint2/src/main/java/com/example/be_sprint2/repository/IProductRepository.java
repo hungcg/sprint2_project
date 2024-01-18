@@ -8,12 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Optional;
 
 
 public interface IProductRepository extends JpaRepository<Product, Integer> {
 
-    Optional<Product> findById(Integer id);
 
     @Query(value = "SELECT\n" +
             "    p.id AS productId,\n" +

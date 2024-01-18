@@ -171,33 +171,23 @@ LEFT JOIN image i ON p.id = i.product_id
 WHERE p.name LIKE '%%' AND c.name LIKE '%%' AND s.name LIKE '%%' AND s.price BETWEEN 0 AND 100000000; 
 
 
--- SELECT 
---     cart.id AS cart_item_id,
---     cart.quantity_order,
---     product.id AS product_id,
---     product.name AS product_name,
---     product.description AS product_description,
---     size.name AS size_name,
---     size.price AS size_price,
---     image.name AS image_name,
---     user.name AS user_name,
---     user.phone AS user_phone,
---     user.address AS user_address
--- FROM 
---     cart
--- JOIN 
---     product ON cart.product_id = product.id
--- JOIN 
---     size ON cart.product_id = size.product_id
--- LEFT JOIN 
---     image ON cart.product_id = image.product_id
--- JOIN 
---     user ON cart.user_id = user.id
--- WHERE 
---     cart.user_id = 1
---     AND cart.is_deleted = 0;
---     
---     INSERT INTO Cart (user_id, product_id, quantity_order, is_deleted)
--- VALUES (:userId, :productId, :quantityOrder, false);
+
+
+SELECT
+    c.id AS id,
+    c.quantity_order AS quantity_order,
+    p.id AS product_id,
+    p.name AS product_name
+FROM
+    cart c
+JOIN
+    product p ON c.product_id = p.id
+WHERE
+    c.product_id = 1 AND c.user_id = 1 AND c.is_deleted = false;
+
+SELECT c.*
+FROM cart AS c
+JOIN product AS p ON c.product_id = p.id
+WHERE c.product_id = 1 AND c.user_id = 1 AND c.is_deleted = 0;
 
 

@@ -25,14 +25,14 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
             "JOIN `size` s ON ca.product_id = s.product_id " +
             "LEFT JOIN image i ON ca.product_id = i.product_id " +
             "JOIN `user` u ON ca.user_id = u.id " +
-            "WHERE ca.user_id = :userId AND ca.is_deleted = false ",nativeQuery = true)
+            "WHERE ca.user_id = :userId AND ca.is_deleted = false ", nativeQuery = true)
     List<CartDto> getCartDetailsByUserId(@Param("userId") Long userId);
 
 
     @Query(value = "SELECT c.* " +
             "FROM cart AS c  " +
             "JOIN product AS p ON c.product_id = p.id " +
-            "WHERE c.product_id = :productId AND c.user_id = :userId AND c.is_deleted = 0 ",nativeQuery = true)
+            "WHERE c.product_id = :productId AND c.user_id = :userId AND c.is_deleted = 0 ", nativeQuery = true)
     Optional<Cart> checkExistProductInCart(@Param("userId") Integer userId,
                                            @Param("productId") Integer productId);
 
@@ -42,10 +42,9 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
     @Query(value = "DELETE c.* " +
             "FROM cart AS c  " +
             "JOIN product AS p ON c.product_id = p.id " +
-            "WHERE c.product_id = :productId AND c.user_id = :userId AND c.is_deleted = 0 ",nativeQuery = true)
+            "WHERE c.product_id = :productId AND c.user_id = :userId AND c.is_deleted = 0 ", nativeQuery = true)
     void removeByUserAndProduct(@Param("userId") Integer userId,
-                                           @Param("productId") Integer productId);
-
+                                @Param("productId") Integer productId);
 
 
     @Transactional

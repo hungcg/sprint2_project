@@ -3,8 +3,10 @@ import axios from 'axios';
 const BASE_API = "http://localhost:8080/api/cart";
 
 const getCartDetailsByUserId = async (userId) => {
+    let userIds =JSON.parse(localStorage.getItem("user"))
+    console.log(userIds.id)
     try {
-        const response = await axios.get(`http://localhost:8080/api/cart/${userId}`);
+        const response = await axios.get(`http://localhost:8080/api/cart/${userIds.id}`);
         console.log(response.data)
         return response.data;
     } catch (error) {
@@ -24,7 +26,7 @@ const addNewProductToCart = async (userId, productId, quantity) => {
 
 const minusProductFromCart = async (userId, productId, quantity) => {
     try {
-        const res = await axios.get(BASE_API + `/remove/${userId}/${productId}/${quantity}`);
+        const res = await axios.get(`http://localhost:8080/api/cart/remove/${userId}/${productId}/${quantity}`);
         return res.status;
     } catch (e) {
 

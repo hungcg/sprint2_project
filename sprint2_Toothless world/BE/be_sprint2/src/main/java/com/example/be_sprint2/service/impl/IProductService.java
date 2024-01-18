@@ -7,10 +7,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProductService {
 
-    Product findProductById(Integer id);
+    Optional<Product> findProductById(Integer id);
 
     Page<ProductDto> findAll(Pageable pageable,
                             String name,

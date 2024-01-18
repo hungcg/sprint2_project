@@ -9,8 +9,15 @@ import * as Util from "../service/Util";
 
 function Cart() {
     const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart.productArr);
     const existingUser = JSON.parse(localStorage.getItem("user"));
+
+
+    const cart = useSelector(state => state.cart.productArr);
+    const totalItem = useSelector(state => state.cart.totalItem)
+
+
+
+
     const userId = existingUser.id;
     console.log(cart, userId);
 
@@ -38,7 +45,7 @@ function Cart() {
 
     useEffect(() => {
         dispatch(getCartFromAPI());
-    }, []);
+    }, [totalItem]);
 
     return (
         <>
@@ -89,7 +96,7 @@ function Cart() {
                                                     >
                                                         <div className="input-group-prepend">
                                                             <button
-                                                                className="btn btn-outline-black increase form-control"
+                                                                className="btn btn-outline-black form-control"
                                                                 type="button"
                                                                 onClick={() => handleMinus(c.productId)}
                                                             >
@@ -103,7 +110,7 @@ function Cart() {
                                                         />
                                                         <div className="input-group-append ">
                                                             <button
-                                                                className="btn btn-outline-black increase  form-control"
+                                                                className="btn btn-outline-black  form-control"
                                                                 type="button"
                                                                 onClick={() => handleAddition(c.productId)}
                                                             >

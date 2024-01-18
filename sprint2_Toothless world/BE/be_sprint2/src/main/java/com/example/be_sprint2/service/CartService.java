@@ -7,6 +7,8 @@ import com.example.be_sprint2.repository.ICartRepository;
 import com.example.be_sprint2.repository.IProductRepository;
 import com.example.be_sprint2.repository.IUserRepository;
 import com.example.be_sprint2.service.impl.ICartService;
+import com.example.be_sprint2.service.impl.IProductService;
+import com.example.be_sprint2.service.impl.IUserService;
 import jakarta.transaction.Transactional;
 import org.hibernate.TransactionException;
 import org.slf4j.Logger;
@@ -24,9 +26,9 @@ public class CartService implements ICartService {
     @Autowired
     private ICartRepository cartRepository;
     @Autowired
-    private IUserRepository userRepository;
+    private IUserService userRepository;
     @Autowired
-    private IProductRepository productRepository;
+    private IProductService productRepository;
     private static final Logger logger = LoggerFactory.getLogger(CartService.class);
 
     @Override
@@ -38,7 +40,7 @@ public class CartService implements ICartService {
     public boolean addToCart(Integer userId, Integer productId, Integer quantityOrder) {
         try {
             Optional<User> existUser = this.userRepository.findById(userId);
-            Optional<Product> existProduct = this.productRepository.findById(productId);
+            Optional<Product> existProduct = this.productRepository.findProductById(productId);
             Optional<Cart> existCart = this.cartRepository.checkExistProductInCart(userId, productId);
             boolean isDatavalid = existUser.isPresent() && existProduct.isPresent();
 

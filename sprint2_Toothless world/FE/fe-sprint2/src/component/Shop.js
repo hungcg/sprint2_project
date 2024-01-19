@@ -56,9 +56,10 @@ function Shop() {
         } catch (e) {
         }
     }
-    const handleAddProductToCart = async () => {
+    const handleAddProductToCart = async (productId) => {
+        console.log(productId,userId)
         if (flag) {
-            dispatch(addToCart(userId, product.productId, 1));
+            dispatch(addToCart(userId, productId, 1));
             toast.success("Thêm vào giỏ hàng thành công!");
         } else {
             toast.success("Vui lòng đăng nhập!");
@@ -101,6 +102,7 @@ function Shop() {
             }
         }
     }, [scrollPosition]);
+    console.log(userId)
 
     return (
         <>
@@ -161,9 +163,10 @@ function Shop() {
                                             <h3 className="product-title">{product.categoryName}</h3>
                                             <strong
                                                 className="product-price">{Util.formatCurrency(product.sizePrice)}</strong>
-                                            <span className="icon-cross"><img onClick={handleAddProductToCart}
-                                                                              src="images/cross.svg"
-                                                                              className="img-fluid"/></span>
+                                            <span className="icon-cross"><img
+                                                onClick={() => handleAddProductToCart(product.productId)}
+                                                src="images/cross.svg"
+                                                className="img-fluid"/></span>
                                         </a>
                                     </div>))) : (<div>
                                 <p style={{textAlign: "center", fontWeight: "700"}}>Không tìm thấy sản phẩm</p>

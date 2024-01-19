@@ -15,4 +15,9 @@ public class SizeService implements ISizeService {
     public List<Size> findAllSize() {
         return repository.findAll();
     }
+
+    @Override
+    public Size findAllByProduct(Integer productId) {
+        return repository.findAllByProduct(productId);
+    }
 }

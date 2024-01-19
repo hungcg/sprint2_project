@@ -1,20 +1,34 @@
 package com.example.be_sprint2.service;
+
+import com.example.be_sprint2.comon.OrderCodeGenerator;
 import com.example.be_sprint2.dto.CartDto;
+import com.example.be_sprint2.dto.OrderPayDto;
+import com.example.be_sprint2.dto.ProductDto;
 import com.example.be_sprint2.model.auth.User;
 import com.example.be_sprint2.model.cart.Cart;
+import com.example.be_sprint2.model.cart.Order;
+import com.example.be_sprint2.model.cart.OrderDetail;
 import com.example.be_sprint2.model.product.Product;
+import com.example.be_sprint2.model.product.Size;
 import com.example.be_sprint2.repository.ICartRepository;
+import com.example.be_sprint2.repository.IOrderDetailRepository;
+import com.example.be_sprint2.repository.IOrderRepository;
 import com.example.be_sprint2.service.impl.ICartService;
 import com.example.be_sprint2.service.impl.IProductService;
+import com.example.be_sprint2.service.impl.ISizeService;
 import com.example.be_sprint2.service.impl.IUserService;
 import jakarta.transaction.Transactional;
 import org.hibernate.TransactionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
 import static com.example.be_sprint2.comon.Enum.ADD_TO_CART;
 import static com.example.be_sprint2.comon.Enum.REMOVE_FROM_CART;
 
@@ -27,6 +41,12 @@ public class CartService implements ICartService {
     private IUserService userRepository;
     @Autowired
     private IProductService productRepository;
+    @Autowired
+    private IOrderRepository orderRepository;
+    @Autowired
+    private IOrderDetailRepository orderDetailRepository;
+    @Autowired
+    private ISizeService sizeService;
     private static final Logger logger = LoggerFactory.getLogger(CartService.class);
 
     @Override
@@ -106,6 +126,60 @@ public class CartService implements ICartService {
         return false;
     }
 
+    @Override
+    public boolean cartPay(OrderPayDto orderPayDto) {
+        try {
+            Integer userId = orderPayDto.getUserId();
+            String orderCode = OrderCodeGenerator.orderCodeGenerate();
+            Optional<User> existedUser = this.userRepository.findById(userId);
+            LocalDateTime now = LocalDateTime.now();
+
+            if (existedUser.isPresent()) {
+                Order newOrder = new Order(existedUser.get(), now.toString(), orderCode);
+                List<CartDto> existedUserCart = this.cartRepository.getCartDetailsByUserId(userId);
+
+//                this.orderRepository.save(newOrder);
+                if (existedUserCart.size() > 0) {
+                    this.orderRepository.save(newOrder);
+                    for (CartDto cartDto : existedUserCart) {
+
+                        Optional<Product> curProduct = this.productRepository.findProductById(cartDto.getProductId());
+                        if (curProduct.isPresent()) {
+                            Size sizePrice = this.sizeService.findAllByProduct(curProduct.get().getId());
+                            int newQty = cartDto.getQuantityOrder();
+                            double newTotalCost = cartDto.getQuantityOrder() * sizePrice.getPrice();
+
+                            OrderDetail newOrderDetail = new OrderDetail(newQty, newTotalCost, newOrder, curProduct.get());
+                            this.orderDetailRepository.save(newOrderDetail);
+                        } else {
+                            return false;
+                        }
+                    }
+                    this.cartRepository.removeByUser(userId);
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            logger.warn("Error while get paying cart: {}", e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public String orderCodeGenerating() {
+        String orderCode = OrderCodeGenerator.orderCodeGenerate();
+        String existedCode = this.orderRepository.isCodeExisted(orderCode);
+        while (existedCode != null) {
+            orderCode = OrderCodeGenerator.orderCodeGenerate();
+            existedCode = this.orderRepository.isCodeExisted(orderCode);
+        }
+        return orderCode;
+    }
 
 }
 

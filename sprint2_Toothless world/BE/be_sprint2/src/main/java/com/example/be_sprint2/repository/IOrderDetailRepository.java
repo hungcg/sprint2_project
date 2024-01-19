@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Integer>{
+public interface IOrderDetailRepository extends JpaRepository<OrderDetail, Integer> {
 
     @Query(value = "SELECT " +
             "    u.id AS userId, " +
@@ -24,7 +24,7 @@ public interface IOrderDetailRepository extends JpaRepository<OrderDetail,Intege
             "JOIN product p ON od.product_id = p.id " +
             "JOIN user u ON od.order_id = u.account_id " +
             "LEFT JOIN category c ON p.id = c.product_id " +
-            "WHERE u.id = :userId AND od.id = :orderId AND od.isdeleted = 0; ", nativeQuery = true)
+            "WHERE u.id = :userId AND od.id = :orderId AND od.isdeleted = 0  ", nativeQuery = true)
     List<OrderDetailsDto> findOrderDetails(@Param("userId") Integer userId,
-                                                  @Param("orderId") Integer orderId);
+                                           @Param("orderId") Integer orderId);
 }

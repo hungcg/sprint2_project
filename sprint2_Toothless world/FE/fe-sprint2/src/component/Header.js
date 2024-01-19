@@ -9,8 +9,10 @@ import {getCartFromAPI} from "../redux/actions/CartAction";
 
 function Header() {
     const location = useLocation();
-    const cartInit = useSelector((state) => state.cart.productArr);
     const dispatch = useDispatch();
+
+    const cartInit = useSelector((state) => state.cart);
+    const totalItem = useSelector((state) => state.cart.totalItem);
 
 
     const isActive = (path) => {
@@ -30,11 +32,11 @@ function Header() {
     useEffect(() => {
         dispatch(getCartFromAPI())
         inforUser()
-    }, []);
+    }, [totalItem]);
 
     return (
         <>
-            <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark "
+            <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark"
                  aria-label="Furni navigation bar">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
@@ -82,7 +84,8 @@ function Header() {
                                 ) : (
                                     <div className="nav-link text-light d-flex ">
                                             <Link className="nav-link" to="/cart">
-                                                <img src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/>
+                                                <img  src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/> {cartInit.totalItem}
+
                                             </Link>
                                         <p style={{margin: "0 10px", fontWeight: "500", fontSize: "18px"}}>{username}
                                         </p>

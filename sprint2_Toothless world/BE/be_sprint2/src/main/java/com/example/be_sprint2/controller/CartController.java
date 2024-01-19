@@ -1,5 +1,6 @@
 package com.example.be_sprint2.controller;
 import com.example.be_sprint2.dto.CartDto;
+import com.example.be_sprint2.dto.OrderPayDto;
 import com.example.be_sprint2.service.impl.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -82,4 +83,16 @@ public class CartController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @PostMapping("/pay")
+    public ResponseEntity<?> cartPay(
+            @RequestBody OrderPayDto orderPayDto) {
+
+        boolean flag = this.cartService.cartPay(orderPayDto);
+
+        if (flag) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 }

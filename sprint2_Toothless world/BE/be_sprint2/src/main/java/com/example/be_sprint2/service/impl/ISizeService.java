@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ISizeService {
     List<Size> findAllSize();
+    Size findAllByProduct(Integer productId);
 }

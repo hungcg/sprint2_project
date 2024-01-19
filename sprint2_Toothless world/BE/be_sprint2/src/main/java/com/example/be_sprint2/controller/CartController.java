@@ -17,7 +17,7 @@ public class CartController {
     private ICartService cartService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<CartDto>> getCartDetailsByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<CartDto>> getCartDetailsByUserId(@PathVariable Integer userId) {
         List<CartDto> cartDtoList = cartService.getCartDetailsByUserId(userId);
         if (cartDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

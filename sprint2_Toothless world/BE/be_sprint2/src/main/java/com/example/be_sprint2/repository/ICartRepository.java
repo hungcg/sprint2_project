@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ICartRepository extends JpaRepository<Cart, Long> {
+public interface ICartRepository extends JpaRepository<Cart, Integer> {
 
     @Query(value = "SELECT ca.id AS cartItemId, ca.quantity_order AS quantityOrder, " +
             "p.id AS productId, p.name AS productName, " +
@@ -26,7 +26,7 @@ public interface ICartRepository extends JpaRepository<Cart, Long> {
             "LEFT JOIN image i ON ca.product_id = i.product_id " +
             "JOIN `user` u ON ca.user_id = u.id " +
             "WHERE ca.user_id = :userId AND ca.is_deleted = false ", nativeQuery = true)
-    List<CartDto> getCartDetailsByUserId(@Param("userId") Long userId);
+    List<CartDto> getCartDetailsByUserId(@Param("userId") Integer userId);
 
 
     @Query(value = "SELECT c.* " +

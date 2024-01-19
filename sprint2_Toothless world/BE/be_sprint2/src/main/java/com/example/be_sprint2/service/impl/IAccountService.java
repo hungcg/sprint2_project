@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface IAccountService {
-    Account findAccountById(Long id);
+    Account findAccountById(Integer id);
     Optional<Account> findByUsername(String username);
 
 }

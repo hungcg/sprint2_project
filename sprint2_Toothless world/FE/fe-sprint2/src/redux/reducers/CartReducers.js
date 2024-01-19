@@ -13,13 +13,11 @@ export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_CART_FROM_API:
             const items = action.payload.length;
-            console.log(action)
             if (items > 0) {
                 let totalPrices = 0;
                 action.payload.map(item => {
                     totalPrices += +item.productPrice * +item.quantity
                 })
-                console.log(action.payload)
                 return {
                     ...state,
                     productArr: action.payload,
@@ -52,10 +50,12 @@ export const cartReducer = (state = initialState, action) => {
             action.payload.map(item => {
                 totalPrices += +item.productPrice * +item.quantity
             })
+            const nextTotalItem = state.totalItem - 1;
             return {
                 ...state,
                 productArr: action.payload,
                 totalPrice: totalPrices,
+                totalItem: nextTotalItem
             }
         case REMOVE_ITEMS:
             const nextQuantity = state.totalItem - 1;

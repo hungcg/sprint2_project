@@ -19,7 +19,7 @@ function Cart() {
 
 
     const userId = existingUser.id;
-    console.log(cart, userId);
+
 
     const handleRemoveFromCart = async (productName, productId) => {
         dispatch(removeProducts(userId, productId));

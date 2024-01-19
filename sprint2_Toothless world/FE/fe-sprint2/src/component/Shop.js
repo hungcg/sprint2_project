@@ -4,11 +4,10 @@ import "../css/bootstrap.min.css"
 import * as service from "../service/ProductService"
 import * as Util from "../service/Util"
 import Pagination from "./Pagination";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../redux/actions/CartAction";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
-
 
 function Shop() {
     const [product, setProduct] = useState([]);
@@ -28,6 +27,7 @@ function Shop() {
     const userId = existingUser.id;
     const flag = userId != null;
     const navigate = useNavigate();
+    const cart = useSelector(state => state.cart.productArr);
 
 
     const display = async () => {
@@ -35,30 +35,25 @@ function Shop() {
             const res = await service.findAll(currentPage, productName, sizeName, categoryName, minPrice, maxPrice);
             setProduct(res.data.content);
             setTotalPages(res.data.totalPages);
-            console.log(res.data.content)
-            console.log(res.data.totalPages)
+
         } catch (e) {
-            console.log(e)
         }
     }
 
     const displayCategory = async () => {
         try {
             const res = await service.getAllCategory()
-            console.log(res)
+
             setCategory(res.data);
         } catch (e) {
-            console.log(e)
         }
     }
 
     const displaySize = async () => {
         try {
             const res = await service.getAllSize()
-            console.log(res)
             setSize(res.data);
         } catch (e) {
-            console.log(e)
         }
     }
     const handleAddProductToCart = async () => {
@@ -166,9 +161,9 @@ function Shop() {
                                             <h3 className="product-title">{product.categoryName}</h3>
                                             <strong
                                                 className="product-price">{Util.formatCurrency(product.sizePrice)}</strong>
-                                            <span className="icon-cross"><img onClick={handleAddProductToCart} src="images/cross.svg"
-                                                                              className="img-fluid"
-                                                                              alt=""/></span>
+                                            <span className="icon-cross"><img onClick={handleAddProductToCart}
+                                                                              src="images/cross.svg"
+                                                                              className="img-fluid"/></span>
                                         </a>
                                     </div>))) : (<div>
                                 <p style={{textAlign: "center", fontWeight: "700"}}>Không tìm thấy sản phẩm</p>

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-
+@Table(name = "cart")
 public class Cart {
 
     @Id
@@ -22,12 +22,14 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-    private Boolean isDeleted;
-
+    @Column(name = "is_deleted",columnDefinition = "bit(1) default 0")
+    private boolean isDeleted;
 
 
     public Cart(User user, Product product, Integer quantityOrder) {
+        this.user = user;
+        this.product = product;
+        this.quantityOrder = quantityOrder;
     }
 
     public Cart(Integer id, Integer quantityOrder, User user, Product product, Boolean isDeleted) {

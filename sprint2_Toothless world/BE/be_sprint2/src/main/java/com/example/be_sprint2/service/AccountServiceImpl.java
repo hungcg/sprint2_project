@@ -12,7 +12,7 @@ public class AccountServiceImpl implements IAccountService {
     @Autowired
     private IAccountRepository repository;
     @Override
-    public Account findAccountById(Long id) {
+    public Account findAccountById(Integer id) {
         return repository.findById(id).get();
     }
 

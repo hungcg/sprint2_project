@@ -1,7 +1,7 @@
 package com.example.be_sprint2.dto;
 
 public interface ProductDto {
-    Long getProductId();
+    Integer getProductId();
 
     String getName();
 

@@ -6,7 +6,7 @@ import com.example.be_sprint2.model.cart.Cart;
 import java.util.List;
 
 public interface ICartService {
-    List<CartDto> getCartDetailsByUserId(Long userId);
+    List<CartDto> getCartDetailsByUserId(Integer userId);
 
     boolean addToCart(Integer userId, Integer productId, Integer quantityOrder);
 

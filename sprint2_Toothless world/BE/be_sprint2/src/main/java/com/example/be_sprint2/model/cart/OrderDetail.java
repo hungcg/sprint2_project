@@ -1,4 +1,6 @@
-package com.example.be_sprint2.model.product;
+package com.example.be_sprint2.model.cart;
+
+import com.example.be_sprint2.model.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,8 @@ public class OrderDetail {
 
     @Column(name = "price_order")
     private Double priceOrder;
+    @Column(name = "is_deleted", columnDefinition = "bit(1) default 0")
+    private boolean isDeleted;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

@@ -11,18 +11,18 @@ VALUES
 
 INSERT INTO accounts (password, username)
 VALUES 
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha'),
-('123123', 'hunghaha');
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hungoke'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha'),
+('$2a$12$hVxhULWb5Ra9K0Xxv0jhG.oKgK0v4JFQJjvZXyxVH50uDmpANEQD6', 'hunghaha');
 
 INSERT INTO account_roles (account_id, role_id)
 VALUES (1, 1);
@@ -121,18 +121,19 @@ INSERT INTO cart (is_deleted, quantity_order, product_id, user_id) VALUES
   (0, 3, 9, 9),
   (0, 1, 10, 10);
 
--- Insert into orders table
-INSERT INTO orders (total_money, date_of_order, user_id) VALUES 
-  (1599.98, '2024-01-12 10:00:00', 1),
-  (39.99, '2024-01-12 11:30:00', 2),
-  (89.97, '2024-01-12 13:15:00', 3),
-  (39.99, '2024-01-12 14:45:00', 4),
-  (19.98, '2024-01-12 16:20:00', 5),
-  (99.98, '2024-01-12 17:45:00', 6),
-  (29.98, '2024-01-12 19:00:00', 7),
-  (59.98, '2024-01-12 20:30:00', 8),
-  (2399.97, '2024-01-12 21:45:00', 9),
-  (999.99, '2024-01-12 23:00:00', 10);
+INSERT INTO orders (is_deleted, total_money, user_id, date_of_order, order_code)
+VALUES
+    (0, 100.50, 1, '2024-01-19 12:30:00', 'ABC123'),
+    (0, 75.20, 2, '2024-01-20 14:45:00', 'DEF456'),
+    (0, 120.75, 3, '2024-01-21 10:15:00', 'GHI789'),
+    (0, 50.80, 1, '2024-01-22 08:00:00', 'JKL012'),
+    (0, 90.30, 2, '2024-01-23 16:20:00', 'MNO345'),
+    (0, 110.60, 3, '2024-01-24 09:30:00', 'PQR678'),
+    (0, 65.90, 1, '2024-01-25 11:45:00', 'STU901'),
+    (0, 80.45, 2, '2024-01-26 13:00:00', 'VWX234'),
+    (0, 95.75, 3, '2024-01-27 15:10:00', 'YZA567'),
+    (0, 55.20, 1, '2024-01-28 07:30:00', 'BCD890');
+
 
 -- Insert into order_detail table
 INSERT INTO order_detail (price_order, quantity, order_id, product_id) VALUES 
@@ -146,12 +147,6 @@ INSERT INTO order_detail (price_order, quantity, order_id, product_id) VALUES
   (29.99, 1, 8, 8),
   (799.99, 3, 9, 9),
   (999.99, 1, 10, 10);
-
-
-
-
-
-
 
 
 
@@ -189,5 +184,8 @@ SELECT c.*
 FROM cart AS c
 JOIN product AS p ON c.product_id = p.id
 WHERE c.product_id = 1 AND c.user_id = 1 AND c.is_deleted = 0;
+
+ALTER TABLE cart
+    ADD UNIQUE INDEX user_product_index (user_id, product_id);
 
 

@@ -13,7 +13,7 @@ const getCartFromAPI = () => async (dispatch) => {
                 type: GET_CART_FROM_API,
                 payload: data,
             });
-            console.log(data)
+
         } else {
             dispatch({
                 type: GET_CART_FROM_API,
@@ -41,12 +41,8 @@ const addToCart = (userId, productId, quantity) => async (dispatch) => {
 const minusFromCart = (userId, productId, quantity) => async (dispatch) => {
         const curCart = await cartService.getCartDetailsByUserId();
         let curQty = 0;
-        curCart.map(item => {
-            if (item.productId === productId) {
-                curQty = item.quantity;
-            }
-        });
-
+        let temp = curCart.filter((item) => item.productId === productId);
+        curQty = temp[0].quantityOrder;
         if (curQty > 1) {
             try {
                 await cartService.minusProductFromCart(userId,

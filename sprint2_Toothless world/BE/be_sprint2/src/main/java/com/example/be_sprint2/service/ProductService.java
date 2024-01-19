@@ -22,6 +22,8 @@ public class ProductService implements IProductService {
         return repository.findById(id);
     }
 
+
+
     @Override
     public Page<ProductDto> findAll(Pageable pageable, String name, String sizeName, String categoryName,Integer minPrice,Integer maxPrice) {
         return repository.findAllProDuct(pageable,"%"+name+"%","%"+sizeName+"%","%"+categoryName+"%",minPrice,maxPrice);

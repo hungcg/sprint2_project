@@ -10,7 +10,7 @@ import lombok.Setter;
 public class AccountRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "account_id",referencedColumnName = "id")
@@ -23,17 +23,18 @@ public class AccountRole {
     public AccountRole() {
     }
 
-    public AccountRole(Long id, Account account, Role role) {
+    public AccountRole(Integer id, Account account, Role role) {
         this.id = id;
         this.account = account;
         this.role = role;
     }
 
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

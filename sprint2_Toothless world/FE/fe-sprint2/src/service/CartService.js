@@ -4,10 +4,9 @@ const BASE_API = "http://localhost:8080/api/cart";
 
 const getCartDetailsByUserId = async (userId) => {
     let userIds =JSON.parse(localStorage.getItem("user"))
-    console.log(userIds.id)
+
     try {
         const response = await axios.get(`http://localhost:8080/api/cart/${userIds.id}`);
-        console.log(response.data)
         return response.data;
     } catch (error) {
         console.error('Error fetching cart details:', error);

@@ -1,9 +1,9 @@
 package com.example.be_sprint2.dto;
 
 public interface CartDto {
-    Long getCartItemId();
+    Integer getCartItemId();
     Integer getQuantityOrder();
-    Long getProductId();
+    Integer getProductId();
     String getProductName();
     String getProductDescription();
     String getSizeName();

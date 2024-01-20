@@ -1,6 +1,5 @@
 import * as cartService from '../../service/CartService';
 import {infoToken} from "../../service/AuthService";
-
 const userId = localStorage.getItem("user");
 
 

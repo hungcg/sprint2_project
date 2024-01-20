@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import "../css/homepage.css";
 import "../css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getCartFromAPI, minusFromCart, removeProducts } from "../redux/actions/CartAction";
 import { toast } from "react-toastify";
 import * as Util from "../service/Util";
+import {Modal} from "react-bootstrap";
+import MyPayPalV2 from "./MyPayPalV2";
 
 
 function Cart() {
+    const [msgModalShow, setMsgModalShow] = useState(false);
+    const [payModalShow, setPayModalShow] = useState(false);
+    const [orderMsg, setOrderMsg] = useState("");
+    const maxLengthOfMsg = 3000;
+
     const dispatch = useDispatch();
     const existingUser = JSON.parse(localStorage.getItem("user"));
 
@@ -42,6 +49,38 @@ function Cart() {
         return totalAmount;
     };
     const totalAmount = calculateTotalAmount();
+
+
+    const handlePayModalClose = () => {
+        setPayModalShow(false);
+        setOrderMsg("");
+    }
+
+    const handlePayModalShow = () => {
+        if (orderMsg.length <= maxLengthOfMsg) {
+            setPayModalShow(true);
+            setMsgModalShow(false);
+        } else {
+            alert("Lời nhắn không được vượt quá 1000 ký tự")
+        }
+    };
+
+    const handleMsgModalShow = () => {
+        setOrderMsg("");
+        setMsgModalShow(true);
+    };
+    const handleMsgModalClose = () => {
+        setOrderMsg("");
+        setMsgModalShow(false);
+    }
+
+    const handleChangeOrderMsg = (event) => {
+        if (orderMsg.length <= maxLengthOfMsg) {
+            setOrderMsg(event.target.value)
+        } else {
+            setOrderMsg(orderMsg);
+        }
+    }
 
     useEffect(() => {
         dispatch(getCartFromAPI());
@@ -169,8 +208,9 @@ function Cart() {
                                 <div className="col-md-12 text-center">
                                     <button
                                         className="btn btn-primary btn-lg py-3 btn-block"
+                                        onClick={() => handleMsgModalShow()}
                                     >
-                                        Mua hàng
+                                        Mua hàng ({totalItem})
                                     </button>
                                 </div>
                             </div>
@@ -178,6 +218,35 @@ function Cart() {
                     </div>
                 </div>
             </div>
+
+            <Modal show={msgModalShow} onHide={handleMsgModalShow}>
+                <Modal.Header className="logout-modal-header" closeButton>
+                    <Modal.Title>Lời nhắn</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="logout-modal-body">
+                    <textarea className="order-msg-input"
+                              onChange={event => handleChangeOrderMsg(event)}/>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="order-msg-btn-cancel" onClick={handleMsgModalClose}>Hủy</button>
+                    <button className="order-msg-btn-confirm" onClick={handlePayModalShow}>Xác nhận</button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={payModalShow} onHide={handlePayModalClose}>
+                <Modal.Header className="logout-modal-header" closeButton>
+                    <Modal.Title>Phương thức thanh toán</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="logout-modal-body">
+                    <MyPayPalV2
+                        totalCost={totalAmount}
+                        closeModalFn={handlePayModalClose}
+                        orderMsg={orderMsg}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }

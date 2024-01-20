@@ -1,2 +1,7 @@
-package comparator_comparable;public class Test2 {
+package comparator_comparable;
+
+public class Test2 {
+
+
+
 }

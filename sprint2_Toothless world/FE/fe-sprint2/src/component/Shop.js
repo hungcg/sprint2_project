@@ -154,7 +154,7 @@ function Shop() {
                             {product && product.length !== 0 ? (
                                 product.map((product) => (
                                     <div className="col-12 col-md-4 col-lg-3 mb-5">
-                                        <a className="product-item" href="#">
+                                        <a className="product-item">
                                             <img style={{height: "300px", width: "350px"}}
                                                  src={product.imageName} className="img-fluid product-thumbnail"
                                                  alt=""/>
@@ -163,10 +163,10 @@ function Shop() {
                                             <h3 className="product-title">{product.categoryName}</h3>
                                             <strong
                                                 className="product-price">{Util.formatCurrency(product.sizePrice)}</strong>
-                                            <span className="icon-cross"><img
+                                            <button className="icon-cross"><img
                                                 onClick={() => handleAddProductToCart(product.productId)}
                                                 src="images/cross.svg"
-                                                className="img-fluid"/></span>
+                                                className="img-fluid"/></button>
                                         </a>
                                     </div>))) : (<div>
                                 <p style={{textAlign: "center", fontWeight: "700"}}>Không tìm thấy sản phẩm</p>

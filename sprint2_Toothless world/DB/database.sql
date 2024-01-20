@@ -187,5 +187,40 @@ WHERE c.product_id = 1 AND c.user_id = 1 AND c.is_deleted = 0;
 
 ALTER TABLE cart
     ADD UNIQUE INDEX user_product_index (user_id, product_id);
+    
+    
+SELECT 
+    u.id AS user_id,
+    od.order_id,
+    od.price_order,
+    od.product_id,
+    od.quantity,
+    c.name AS category_name,
+    p.name AS product_name
+FROM order_detail od
+JOIN product p ON od.product_id = p.id
+JOIN user u ON od.order_id = u.account_id
+LEFT JOIN category c ON p.id = c.product_id
+WHERE u.id = 1 AND od.id = 1;
+
+
+
+SELECT
+    o.id AS order_id,
+    o.is_deleted AS order_is_deleted,
+    o.total_money AS order_total_money,
+    o.user_id AS order_user_id,
+    o.date_of_order AS order_date_of_order,
+    o.order_code AS order_order_code,
+    u.id AS user_id
+FROM orders o
+JOIN user u ON o.user_id = u.id
+WHERE o.user_id = 1 AND o.order_code = '';
+
+
+select * from size
+join product on size.product_id = product.id
+where size.product_id = 1;
+
 
 

@@ -42,21 +42,21 @@ const removeProductFromCart = async (userId, productId) => {
         }
     }
 
-// const payCart = async (message) => {
-//     try {
-//         const username = getUsernameByJwt();
-//         const orderPayDto = {
-//             username: username,
-//             message: message,
-//         }
-//         return await axios.post(BASE_API + `/pay`, orderPayDto);
-//     } catch (err) {
-//
-//     }
-// }
+const payCart = async () => {
+    try {
+        let userIds =JSON.parse(localStorage.getItem("user"))
+        console.log(userIds.id)
+        const orderPayDto = {
+            userId: userIds.id
+        }
+        return await axios.post(BASE_API + `/pay`, orderPayDto);
+    } catch (err) {
+
+    }
+}
 
 ;
-export {getCartDetailsByUserId, addNewProductToCart, removeProductFromCart, minusProductFromCart}
+export {getCartDetailsByUserId, addNewProductToCart, removeProductFromCart, minusProductFromCart,payCart}
 
 
 

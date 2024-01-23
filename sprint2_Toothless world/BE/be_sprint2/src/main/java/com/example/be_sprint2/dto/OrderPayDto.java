@@ -14,11 +14,21 @@ public class OrderPayDto {
     @NotBlank
     private Integer userId;
 
+    private Double totalMoney;
+
     public Integer getUserId() {
         return userId;
     }
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Double getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(Double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 }

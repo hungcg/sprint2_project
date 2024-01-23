@@ -1,6 +1,7 @@
 package com.example.be_sprint2.controller;
 import com.example.be_sprint2.dto.ProductDto;
 import com.example.be_sprint2.model.product.Category;
+import com.example.be_sprint2.model.product.Product;
 import com.example.be_sprint2.model.product.Size;
 import com.example.be_sprint2.service.impl.ICategoryService;
 import com.example.be_sprint2.service.impl.IProductService;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -27,18 +29,29 @@ public class ProductController {
     private ISizeService sizeService;
 
     @GetMapping("")
-    public ResponseEntity<Page<ProductDto>> getAllProduct(@RequestParam(name = "page",defaultValue = "0",required = false) Integer page,
+    public ResponseEntity<Page<ProductDto>> getAllProduct(@RequestParam(name = "page",defaultValue = "0",required = false) int page,
                                                           @RequestParam(name = "name",defaultValue = "",required = false) String name,
                                                           @RequestParam(name = "sizeName",defaultValue = "",required = false) String sizeName,
                                                           @RequestParam(name = "categoryName",defaultValue = "",required = false) String categoryName,
                                                           @RequestParam(name = "minPrice",defaultValue = "0",required = false) Integer minPrice,
-                                                          @RequestParam(name = "maxPrice",defaultValue = "100000000",required = false) Integer maxPrice) {
+                                                          @RequestParam(name = "maxPrice",defaultValue = "25000000",required = false) Integer maxPrice) {
         Pageable pageable = PageRequest.of(page, 8, Sort.by("sizePrice","categoryName"));
         Page<ProductDto> newsList = service.findAll(pageable,name,sizeName,categoryName,minPrice,maxPrice);
         if (newsList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(newsList, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity<ProductDto> showNewsDetails(@PathVariable Integer id) {
+        Product product = service.findProductById(id);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            ProductDto productDto = service.showProductDetails(id);
+            return new ResponseEntity<>(productDto, HttpStatus.OK);
         }
     }
 

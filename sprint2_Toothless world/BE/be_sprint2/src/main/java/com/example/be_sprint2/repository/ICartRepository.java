@@ -51,7 +51,7 @@ public interface ICartRepository extends JpaRepository<Cart, Integer> {
     @Modifying
     @Query(value =
             "DELETE FROM cart " +
-                    "WHERE product_id = :userId AND is_deleted = 0 ", nativeQuery = true)
-    void removeByUser(@Param("userId") Integer userId);
+                    "WHERE user_id = :userId AND is_deleted = 0 ", nativeQuery = true)
+    void removeByUser(Integer userId);
 
 }

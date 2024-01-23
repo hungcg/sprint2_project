@@ -76,21 +76,26 @@ function Header() {
                                 </NavLink>
                             </li>
                         </ul>
-                        <div className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                        <div className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 ">
                                 {!user ? (
                                     <Link className="nav-link" to="/login">
                                         <img src="https://themewagon.github.io/furni/images/user.svg" alt="Login"/>
                                     </Link>
                                 ) : (
-                                    <div className="nav-link text-light d-flex ">
+                                    <div className="nav-link text-light d-flex mt-4 ">
                                             <Link className="nav-link" to="/cart">
-                                                <img  src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/> {cartInit.totalItem}
-
+                                                <img style={{height:"30px"}}
+                                                     src="https://themewagon.github.io/furni/images/cart.svg" alt="Cart"/>
+                                                <span style={{position:"relative",bottom:"40px",left:"25px"}}
+                                                    className="badge bg-success rounded-pill">{cartInit.totalItem}</span>
                                             </Link>
-                                        <p style={{margin: "0 10px", fontWeight: "500", fontSize: "18px"}}>{username}
+                                        <Link to="history">
+                                            <i style={{margin: "17px 15px"}} className="fa-solid fa-list-check text-light"></i>
+                                        </Link>
+                                        <p style={{marginTop: "10px", marginLeft: "10px",marginRight: "0",fontWeight: "500", fontSize: "18px"}}>{username}
                                         </p>
                                         <Link role="button" data-bs-toggle="modal" data-bs-target="#logout">
-                                            <i className="fa-solid fa-right-from-bracket text-light"></i>
+                                            <i style={{margin: "15px 0"}} className="fa-solid fa-right-from-bracket text-light"></i>
                                         </Link>
                                         <ModalLogout/>
                                     </div>

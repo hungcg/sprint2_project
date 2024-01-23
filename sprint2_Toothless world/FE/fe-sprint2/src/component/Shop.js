@@ -7,12 +7,14 @@ import Pagination from "./Pagination";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart} from "../redux/actions/CartAction";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import * as accountService from "../service/AuthService";
+
 
 function Shop() {
     const [product, setProduct] = useState([]);
     const [minPrice, setMinPrice] = useState("0");
-    const [maxPrice, setMaxPrice] = useState("1000000000");
+    const [maxPrice, setMaxPrice] = useState("25000000");
     const [category, setCategory] = useState([]);
     const [size, setSize] = useState([]);
     const [sizeName, setSizeName] = useState("");
@@ -23,18 +25,38 @@ function Shop() {
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const dispatch = useDispatch();
-    const existingUser = JSON.parse(localStorage.getItem("user"));
-    const userId = existingUser.id;
-    const flag = userId != null;
+    // const existingUser = JSON.parse(localStorage.getItem("user"));
+    // const userId = existingUser.id;
+    // const flag = userId != null;
     const navigate = useNavigate();
     const cart = useSelector(state => state.cart.productArr);
+
+    const [userId, setUserId] = useState()
+    const [username, setUsername] = useState("")
+    const [user, setUser] = useState({})
+    const infoUsername = async () => {
+        let res = await accountService.infoToken()
+        if (res) {
+            setUsername(res.sub)
+            let res1 = JSON.parse(localStorage.getItem("user"))
+            setUserId(res1.id)
+            console.log(res1.id)
+        }
+    }
+
+    useEffect(() => {
+        infoUsername()
+    }, []);
 
 
     const display = async () => {
         try {
+            console.log(currentPage)
             const res = await service.findAll(currentPage, productName, sizeName, categoryName, minPrice, maxPrice);
             setProduct(res.data.content);
             setTotalPages(res.data.totalPages);
+
+            console.log(res)
 
         } catch (e) {
         }
@@ -58,7 +80,7 @@ function Shop() {
     }
     const handleAddProductToCart = async (productId) => {
         console.log(productId,userId)
-        if (flag) {
+        if (userId) {
             dispatch(addToCart(userId, productId, 1));
             toast.success("Thêm vào giỏ hàng thành công!");
         } else {
@@ -70,6 +92,11 @@ function Shop() {
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    const goDetailsPage = (id) => {
+        navigate(`/detail/${id}`);
+
+    }
 
 
     useEffect(() => {
@@ -102,7 +129,6 @@ function Shop() {
             }
         }
     }, [scrollPosition]);
-    console.log(userId)
 
     return (
         <>
@@ -139,7 +165,7 @@ function Shop() {
                                    onChange={(event) => setMaxPrice(event.target.value)}/>
                             <div>
                                 <label htmlFor="customRange3" className="form-label text-light ">Mức giá</label>
-                                <input type="range" className="form-range " min="0" max="10000000" step="100000"
+                                <input type="range" className="form-range " min="0" max="25000000" step="100000"
                                        id="customRange3"
                                        onChange={(event) => setMaxPrice(event.target.value)}/>
                             </div>
@@ -154,13 +180,12 @@ function Shop() {
                             {product && product.length !== 0 ? (
                                 product.map((product) => (
                                     <div className="col-12 col-md-4 col-lg-3 mb-5">
-                                        <a className="product-item">
+                                        <a className="product-item" >
                                             <img style={{height: "300px", width: "350px"}}
+                                                 onClick={() => goDetailsPage(product.productId)}
                                                  src={product.imageName} className="img-fluid product-thumbnail"
                                                  alt=""/>
                                             <h3 className="product-title">{product.name}</h3>
-                                            <h3 className="product-title">{product.sizeName}</h3>
-                                            <h3 className="product-title">{product.categoryName}</h3>
                                             <strong
                                                 className="product-price">{Util.formatCurrency(product.sizePrice)}</strong>
                                             <button className="icon-cross"><img

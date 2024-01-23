@@ -15,5 +15,6 @@ public interface OrderDetailsDto {
     String getCategoryName();
 
     String getProductName();
+    String getImageName();
 }
 

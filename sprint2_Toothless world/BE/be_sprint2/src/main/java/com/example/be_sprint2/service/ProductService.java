@@ -18,8 +18,8 @@ public class ProductService implements IProductService {
 
 
     @Override
-    public Optional<Product> findProductById(Integer id) {
-        return repository.findById(id);
+    public Product findProductById(Integer id) {
+        return repository.findById(id).get();
     }
 
 
@@ -27,5 +27,10 @@ public class ProductService implements IProductService {
     @Override
     public Page<ProductDto> findAll(Pageable pageable, String name, String sizeName, String categoryName,Integer minPrice,Integer maxPrice) {
         return repository.findAllProDuct(pageable,"%"+name+"%","%"+sizeName+"%","%"+categoryName+"%",minPrice,maxPrice);
+    }
+
+    @Override
+    public ProductDto showProductDetails(Integer productId) {
+        return repository.showProductDetails(productId);
     }
 }

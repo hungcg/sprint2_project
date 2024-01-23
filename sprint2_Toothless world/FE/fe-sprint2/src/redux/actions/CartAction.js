@@ -3,6 +3,7 @@ import {infoToken} from "../../service/AuthService";
 const userId = localStorage.getItem("user");
 
 
+
 const getCartFromAPI = () => async (dispatch) => {
     try {
         const flag = infoToken() != null;

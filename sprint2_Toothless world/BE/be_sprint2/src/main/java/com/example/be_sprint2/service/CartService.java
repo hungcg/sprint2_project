@@ -58,10 +58,10 @@ public class CartService implements ICartService {
     public boolean addToCart(Integer userId, Integer productId, Integer quantityOrder) {
         try {
             Optional<User> existUser = this.userRepository.findById((userId));
-            Optional<Product> existProduct = this.productRepository.findProductById(productId);
+            Product existProduct = this.productRepository.findProductById(productId);
             Optional<Cart> existCart = this.cartRepository.checkExistProductInCart(userId, productId);
 
-            boolean isDatavalid = existUser.isPresent() && existProduct.isPresent();
+            boolean isDatavalid = existUser.isPresent() && existProduct != null;
 
             if (isDatavalid && existCart.isPresent()) {
                 Optional<Cart> cart = this.cartRepository.checkExistProductInCart(userId, productId);
@@ -75,7 +75,7 @@ public class CartService implements ICartService {
                 }
 
             } else if (isDatavalid && !existCart.isPresent()) {
-                Cart newCart = new Cart(existUser.get(), existProduct.get(), quantityOrder);
+                Cart newCart = new Cart(existUser.get(), existProduct, quantityOrder);
                 this.cartRepository.save(newCart);
                 return true;
             } else {
@@ -135,21 +135,19 @@ public class CartService implements ICartService {
             LocalDateTime now = LocalDateTime.now();
 
             if (existedUser.isPresent()) {
-                Order newOrder = new Order(existedUser.get(), now.toString(), orderCode);
+                Order newOrder = new Order(now.toString(),orderCode,orderPayDto.getTotalMoney(),existedUser.get());
                 List<CartDto> existedUserCart = this.cartRepository.getCartDetailsByUserId(userId);
-
-//                this.orderRepository.save(newOrder);
                 if (existedUserCart.size() > 0) {
                     this.orderRepository.save(newOrder);
                     for (CartDto cartDto : existedUserCart) {
 
-                        Optional<Product> curProduct = this.productRepository.findProductById(cartDto.getProductId());
-                        if (curProduct.isPresent()) {
-                            Size sizePrice = this.sizeService.findAllByProduct(curProduct.get().getId());
+                        Product curProduct = this.productRepository.findProductById(cartDto.getProductId());
+                        if (curProduct != null) {
+                            Size sizePrice = sizeService.findAllByProduct(curProduct.getId());
                             int newQty = cartDto.getQuantityOrder();
                             double newTotalCost = cartDto.getQuantityOrder() * sizePrice.getPrice();
 
-                            OrderDetail newOrderDetail = new OrderDetail(newQty, newTotalCost, newOrder, curProduct.get());
+                            OrderDetail newOrderDetail = new OrderDetail(newQty, newTotalCost, newOrder, curProduct);
                             this.orderDetailRepository.save(newOrderDetail);
                         } else {
                             return false;

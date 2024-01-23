@@ -5,7 +5,6 @@ const BASE_API = "http://localhost:8080/api/cart";
 const getCartDetailsByUserId = async (userId) => {
     let userIds =JSON.parse(localStorage.getItem("user"))
     console.log(userIds.id)
-
     try {
         const response = await axios.get(`http://localhost:8080/api/cart/${userIds.id}`);
         return response.data;
@@ -42,12 +41,13 @@ const removeProductFromCart = async (userId, productId) => {
         }
     }
 
-const payCart = async () => {
+const payCart = async (totalMoney) => {
     try {
         let userIds =JSON.parse(localStorage.getItem("user"))
         console.log(userIds.id)
         const orderPayDto = {
-            userId: userIds.id
+            userId: userIds.id,
+            totalMoney: totalMoney
         }
         return await axios.post(BASE_API + `/pay`, orderPayDto);
     } catch (err) {

@@ -41,4 +41,11 @@ public class Order {
         this.dateOfOrder = dateOfOrder;
         this.orderCode = orderCode;
     }
+
+    public Order(String dateOfOrder, String orderCode, Double totalMoney, User user) {
+        this.dateOfOrder = dateOfOrder;
+        this.orderCode = orderCode;
+        this.totalMoney = totalMoney;
+        this.user = user;
+    }
 }

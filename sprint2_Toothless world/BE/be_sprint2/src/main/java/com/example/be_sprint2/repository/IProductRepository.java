@@ -33,4 +33,22 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                                     @Param("minPrice") Integer minPrice,
                                     @Param("maxPrice") Integer maxPrice);
 
+
+
+    @Query(value = "SELECT " +
+            "    p.id AS productId, " +
+            "    p.name AS name, " +
+            "    p.description AS description, " +
+            "    c.name AS categoryName, " +
+            "    s.name AS sizeName, " +
+            "    s.price AS sizePrice, " +
+            "    i.name AS imageName " +
+            "FROM product p " +
+            "JOIN category c ON p.id = c.product_id " +
+            "JOIN size s ON p.id = s.product_id " +
+            "LEFT JOIN image i ON p.id = i.product_id " +
+            "WHERE p.id = :productId",
+            nativeQuery = true)
+    ProductDto showProductDetails(@Param("productId") Integer productId);
+
 }

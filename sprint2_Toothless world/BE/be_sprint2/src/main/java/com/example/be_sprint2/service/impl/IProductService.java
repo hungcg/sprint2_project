@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface IProductService {
 
-    Optional<Product> findProductById(Integer id);
+    Product findProductById(Integer id);
 
     Page<ProductDto> findAll(Pageable pageable,
                             String name,
@@ -19,4 +19,6 @@ public interface IProductService {
                              String categoryName,
                              Integer minPrice,
                              Integer maxPrice);
+
+    ProductDto showProductDetails( Integer productId);
 }

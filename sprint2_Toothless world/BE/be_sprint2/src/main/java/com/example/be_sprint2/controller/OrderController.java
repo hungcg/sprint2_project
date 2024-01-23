@@ -48,7 +48,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/details/{orderId}/{userId}")
+    @GetMapping("/details/{userId}/{orderId}")
     public ResponseEntity<?> getOrderDetail(@PathVariable(name = "orderId") Integer orderId,
                                             @PathVariable(name = "userId")Integer userId) {
         Optional<User> existedUser = this.userRepository.findById(userId);

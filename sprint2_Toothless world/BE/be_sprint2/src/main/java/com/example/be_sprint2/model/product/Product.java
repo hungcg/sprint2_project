@@ -15,6 +15,7 @@ public class Product {
 
     private String name;
 
+    @Column(name = "description", columnDefinition = "longtext")
     private String description;
 
     public Integer getId() {

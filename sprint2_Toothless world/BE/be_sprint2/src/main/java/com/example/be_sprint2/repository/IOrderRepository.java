@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 public interface IOrderRepository extends JpaRepository<Order,Integer>{
 
     @Query(value = "SELECT " +
@@ -20,8 +18,9 @@ public interface IOrderRepository extends JpaRepository<Order,Integer>{
             "FROM orders o " +
             "JOIN user u ON o.user_id = u.id " +
             "WHERE o.user_id = :userId " +
-            "AND o.order_code = :orderCode " +
-            "AND o.is_deleted = 0 ", nativeQuery = true)
+            "AND o.order_code like :orderCode " +
+            "AND o.is_deleted = 0 " +
+            "ORDER BY o.id DESC ", nativeQuery = true)
     Page<IOrderDto> findAllOrder(Pageable pageable,
                                  @Param("userId") Integer userId,
                                  @Param("orderCode") String orderCode);

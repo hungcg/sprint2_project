@@ -13,7 +13,12 @@ public class UserService implements IUserService {
     @Autowired
     private IUserRepository repository;
     @Override
-    public Optional<User> findById(Integer id) {
-        return repository.findById(id);
+    public User findById(Integer id) {
+        return repository.findById(id).get();
+    }
+
+    @Override
+    public User showUserDetails(Integer userId) {
+        return repository.showUserDetails(userId);
     }
 }

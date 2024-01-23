@@ -7,8 +7,7 @@ import {toast} from "react-toastify";
 import * as Util from "../service/Util";
 import PayPalButtons from "./PayPalButton";
 import * as accountService from "../service/AuthService";
-
-
+import * as ProductService from "../service/ProductService";
 
 
 function Cart() {
@@ -16,6 +15,7 @@ function Cart() {
 
     const dispatch = useDispatch();
     const existingUser = JSON.parse(localStorage.getItem("user"));
+    const usersID = existingUser.id;
 
 
     const cart = useSelector(state => state.cart.productArr);
@@ -25,7 +25,7 @@ function Cart() {
 
     const [userId, setUserId] = useState()
     const [username, setUsername] = useState("")
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     const infoUsername = async () => {
         let res = await accountService.infoToken()
         if (res) {
@@ -41,12 +41,11 @@ function Cart() {
     }, []);
 
 
-    // const displayUserDetails = async () => {
-    //     const res = await CartService.getCartDetailsByUserId(userId);
-    //     setUser(res.data);
-    //     console.log(res)
-    // }
-
+    const displayUserDetails = async () => {
+        const res = await ProductService.getUserDetails(usersID);
+        setUser(res.data);
+        console.log(res)
+    }
 
 
     const handleRemoveFromCart = async (productName, productId) => {
@@ -73,6 +72,7 @@ function Cart() {
 
 
     useEffect(() => {
+        displayUserDetails()
         dispatch(getCartFromAPI());
         setTotalAmount(calculateTotalAmount())
     }, [totalItem, userId]);
@@ -112,8 +112,9 @@ function Cart() {
                                 {cart && cart.length !== 0 ? (
                                     cart.map((c, index) => (
                                         <tr key={index}>
-                                            <td className="product-thumbnail">
-                                                <img src={c.imageName} alt="Image" className="img-fluid"/>
+                                            <td className="product-thumbnail text-center">
+                                                <img style={{height:"200px",width:"200px",borderRadius:"10px"}}
+                                                     src={c.imageName} alt="Image" className="img-fluid"/>
                                             </td>
                                             <td className="product-name">
                                                 <h2 className="h5 text-black">{c.productName}</h2>
@@ -121,8 +122,8 @@ function Cart() {
                                             <td>{Util.formatCurrency(c.sizePrice)}</td>
                                             <td>
                                                 <div
-                                                    className="input-group mb-3 d-flex align-items-center quantity-container"
-                                                    style={{maxWidth: 120,left:"17px"}}
+                                                    className="input-group mb-3 d-flex align-items-center quantity-container text-center"
+                                                    style={{maxWidth: 120, left: "17px"}}
                                                 >
                                                     <div className="input-group-prepend">
                                                         <button
@@ -133,11 +134,11 @@ function Cart() {
                                                             -
                                                         </button>
                                                     </div>
-                                                    <input style={{borderRadius:"10px"}}
-                                                        type="text"
-                                                        className="form-control text-center quantity-amount"
-                                                        value={c.quantityOrder || 0}
-                                                        readOnly={true}
+                                                    <input style={{borderRadius: "10px"}}
+                                                           type="text"
+                                                           className="form-control text-center quantity-amount"
+                                                           value={c.quantityOrder || 0}
+                                                           readOnly={true}
                                                     />
                                                     <div className="input-group-append ">
                                                         <button
@@ -178,34 +179,40 @@ function Cart() {
                         <div className="col-md-10 border-bottom mb-5">
                             <h3 className="text-black h4 text-center text-uppercase fw-bold">Thanh toán</h3>
                         </div>
-                    {/*</div>*/}
-                    {/*    <div>*/}
-                    {/*        <div className="row mb-3">*/}
-                    {/*            <div className="col-md-6">*/}
-                    {/*                <span className="text-black">Tên người nhận</span>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="col-md-6 text-right">*/}
-                    {/*                <i className="text-black">{user.userName}</i>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="row mb-3">*/}
-                    {/*            <div className="col-md-6">*/}
-                    {/*                <span className="text-black">Số điện thoại</span>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="col-md-6 text-right">*/}
-                    {/*                <i className="text-black">{user.userPhone}</i>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="row mb-3">*/}
-                    {/*            <div className="col-md-6">*/}
-                    {/*                <span className="text-black">Địa chỉ</span>*/}
-                    {/*            </div>*/}
-                    {/*            <div className="col-md-6 text-right">*/}
-                    {/*                <i className="text-black">{user.userAddress}</i>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*<hr/>*/}
-                    <div className="row mb-3 text-center">
+
+                    </div>
+                    {user ? (
+                            <div>
+                            <div className="row mb-3">
+                            <div className="col-md-6">
+                                <span className="text-black">Tên người nhận</span>
+                            </div>
+                            <div className="col-md-6 text-right">
+                                <i className="text-black fw-bold">{user.name}</i>
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <div className="col-md-6">
+                                <span className="text-black">Số điện thoại</span>
+                            </div>
+                            <div className="col-md-6 text-right">
+                                <i className="text-black fw-bold">{user.phone}</i>
+                            </div>
+                        </div>
+                        <div className="row mb-3">
+                            <div className="col-md-6">
+                                <span className="text-black">Địa chỉ</span>
+                            </div>
+                            <div className="col-md-6 text-right">
+                                <i className="text-black fw-bold">{user.address}</i>
+                            </div>
+                        </div>
+                    </div>
+                    ):<div>
+                        <p>Không có dữ liệu</p>
+                    </div>}
+                    <hr/>
+                    <div className="row mb-3 ">
                         <div className="col-md-6  ">
                             <span className="text-black">Tổng tiền hàng</span>
                         </div>
@@ -213,7 +220,7 @@ function Cart() {
                             <strong className="text-black">{Util.formatCurrency(totalAmount)}</strong>
                         </div>
                     </div>
-                    <div className="row mb-5 text-center">
+                    <div className="row mb-5 ">
                         <div className="col-md-6">
                             <span className="text-black ">Tổng thanh toán</span>
                         </div>
@@ -221,7 +228,7 @@ function Cart() {
                             <strong className="text-black">{Util.formatCurrency(totalAmount)}</strong>
                         </div>
                     </div>
-                    <div className="row mb-5 text-center">
+                    <div className="row mb-5 ">
                         <div className="col-md-6">
                             <span className="text-black ">Tổng tiền sau quy đổi</span>
                         </div>
@@ -244,7 +251,6 @@ function Cart() {
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
 </>

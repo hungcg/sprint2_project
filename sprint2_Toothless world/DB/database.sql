@@ -32,16 +32,16 @@ VALUES (1, 1);
 
 -- Insert into user table
 INSERT INTO user (account_id, address, birthday, email, gender, name, phone) VALUES 
-  (1, 'Address1', '1990-01-01', 'email1@example.com', 'Male', 'John Doe', '1234567890'),
-  (2, 'Address2', '1991-02-02', 'email2@example.com', 'Female', 'Jane Doe', '2345678901'),
-  (3, 'Address3', '1992-03-03', 'email3@example.com', 'Male', 'Bob Smith', '3456789012'),
-  (4, 'Address4', '1993-04-04', 'email4@example.com', 'Female', 'Alice Johnson', '4567890123'),
-  (5, 'Address5', '1994-05-05', 'email5@example.com', 'Male', 'Sam Wilson', '5678901234'),
-  (6, 'Address6', '1995-06-06', 'email6@example.com', 'Female', 'Emily White', '6789012345'),
-  (7, 'Address7', '1996-07-07', 'email7@example.com', 'Male', 'Chris Brown', '7890123456'),
-  (8, 'Address8', '1997-08-08', 'email8@example.com', 'Female', 'Jessica Green', '8901234567'),
-  (9, 'Address9', '1998-09-09', 'email9@example.com', 'Male', 'Megan Taylor', '9012345678'),
-  (10, 'Address10', '1999-10-10', 'email10@example.com', 'Female', 'Daniel Davis', '0123456789');
+  (1, '123 Đường Hoàng Diệu, Quận 1, Thành phố Hồ Chí Minh', '1990-01-01', 'email1@example.com', 'Male', 'John Doe', '0987123456'),
+  (2, '456 Phố Lê Lợi, Quận Hai Bà Trưng, Hà Nội', '1991-02-02', 'email2@example.com', 'Female', 'Jane Doe', '0909887654'),
+  (3, '789 Ngõ 12 Đường Trần Phú, Quận Hoàn Kiếm, Hà Nội', '1992-03-03', 'email3@example.com', 'Male', 'Bob Smith', '0978234567'),
+  (4, '505 Đường Nguyễn Văn Cừ, Quận Long Biên, Hà Nội', '1993-04-04', 'email4@example.com', 'Female', 'Alice Johnson', '0918765432'),
+  (5, '606 Phố Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội', '1994-05-05', 'email5@example.com', 'Male', 'Sam Wilson', '0909887654'),
+  (6, '202 Đường Bạch Đằng, Quận Ngô Quyền, Hải Phòng', '1995-06-06', 'email6@example.com', 'Female', 'Emily White', '0909887654'),
+  (7, '202 Đường Bạch Đằng, Quận Ngô Quyền, Hải Phòng', '1996-07-07', 'email7@example.com', 'Male', 'Chris Brown', '0918765432'),
+  (8, '202 Đường Bạch Đằng, Quận Ngô Quyền, Hải Phòng', '1997-08-08', 'email8@example.com', 'Female', 'Jessica Green', '0123456789'),
+  (9, '303 Ngõ 45 Đường Phan Chu Trinh, Quận Hải Châu, Đà Nẵng', '1998-09-09', 'email9@example.com', 'Male', 'Megan Taylor', '0918765432'),
+  (10, '707 Ngõ 21 Đường Lê Lai, Quận Quận Thanh Xuân, Hà Nội', '1999-10-10', 'email10@example.com', 'Female', 'Daniel Davis', '0123456789');
   
   
 -- Insert into product table for Sofas
@@ -382,5 +382,5 @@ FROM (
 ) AS numbered
 WHERE row_num = 1;
 
-
+SELECT * FROM user WHERE id = 1;
 

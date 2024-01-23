@@ -12,8 +12,9 @@ function Contact(props) {
                             <div className="intro-excerpt">
                                 <h1>Liên hệ </h1>
                                 <p className="mb-4">
-                                    Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
-                                    velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
+
+                                    Nếu bạn muốn liên hệ với chúng tôi, chúng tôi rất vui lòng nhận được phản hồi và câu
+                                    hỏi từ bạn. Dưới đây là thông tin liên hệ của chúng tôi.
                                 </p>
                             </div>
                         </div>

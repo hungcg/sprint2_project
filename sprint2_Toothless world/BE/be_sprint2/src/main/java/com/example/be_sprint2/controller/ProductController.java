@@ -1,11 +1,13 @@
 package com.example.be_sprint2.controller;
 import com.example.be_sprint2.dto.ProductDto;
+import com.example.be_sprint2.model.auth.User;
 import com.example.be_sprint2.model.product.Category;
 import com.example.be_sprint2.model.product.Product;
 import com.example.be_sprint2.model.product.Size;
 import com.example.be_sprint2.service.impl.ICategoryService;
 import com.example.be_sprint2.service.impl.IProductService;
 import com.example.be_sprint2.service.impl.ISizeService;
+import com.example.be_sprint2.service.impl.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,8 @@ public class ProductController {
     private ICategoryService categoryService;
     @Autowired
     private ISizeService sizeService;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("")
     public ResponseEntity<Page<ProductDto>> getAllProduct(@RequestParam(name = "page",defaultValue = "0",required = false) int page,
@@ -52,6 +56,17 @@ public class ProductController {
         } else {
             ProductDto productDto = service.showProductDetails(id);
             return new ResponseEntity<>(productDto, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> showUserDetails(@PathVariable Integer id) {
+        User user = userService.findById(id);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            userService.showUserDetails(id);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
     }
 

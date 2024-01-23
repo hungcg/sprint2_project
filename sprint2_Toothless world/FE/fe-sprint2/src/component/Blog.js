@@ -12,8 +12,7 @@ function Blog() {
                             <div className="intro-excerpt">
                                 <h1>Blog</h1>
                                 <p className="mb-4">
-                                    Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
-                                    velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
+                                    Chào mừng bạn đến với blog "Khám Phá Thế Giới"! Tại đây, chúng tôi sẽ cùng nhau hành trình qua những chủ đề đa dạng, từ du lịch, văn hóa, giáo dục đến cuộc sống hàng ngày. Được lấy cảm hứng từ sự tò mò và khao khát hiểu biết, chúng tôi mong muốn chia sẻ kiến thức, trải nghiệm và câu chuyện đặc sắc.
                                 </p>
                             </div>
                         </div>

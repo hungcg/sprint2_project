@@ -22,6 +22,16 @@ export const getProductDetails = async (id) => {
     }
 }
 
+
+export const getUserDetails = async (id) => {
+    try {
+        const res = await axios.get(`http://localhost:8080/api/product/users/${id}`);
+        return res;
+    } catch (e) {
+        alert("Hiển thị loại lỗi!");
+    }
+}
+
 export const getAllCategory = async () => {
     try {
         let res = await axios.get(`http://localhost:8080/api/product/category`)

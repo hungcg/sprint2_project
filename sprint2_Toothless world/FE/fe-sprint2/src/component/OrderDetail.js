@@ -5,7 +5,7 @@ import * as service from "../service/OrderService";
 
 
 function OrderDetail() {
-    const {id} = useParams();
+    const {id, orderId} = useParams();
     const [orderDetails, setOrderDetails] = useState([]);
     const navigate = useNavigate();
     console.log(id)
@@ -13,7 +13,7 @@ function OrderDetail() {
 
     const displayOrderDetails = async () => {
         try {
-            const res = await service.getOrderDetails(id);
+            const res = await service.getOrderDetails(id,orderId);
             setOrderDetails(res);
         } catch (e) {
             alert(e)
@@ -49,22 +49,25 @@ function OrderDetail() {
                                 <table className="table">
                                     <thead>
                                     <tr>
-                                        <th className="product-thumbnail">Mã đơn hàng</th>
-                                        <th className="product-price">Ngày mua</th>
-                                        <th className="product-price">Giờ mua</th>
-                                        <th className="product-price">Giá trị đơn hàng (VND)</th>
+                                        <th className="product-thumbnail text-center">Ảnh</th>
+                                        <th className="product-price text-center">Sản phẩm</th>
+                                        <th className="product-price text-center">Số  lượng</th>
+                                        <th className="product-price text-center">Loại sản phẩm</th>
+                                        <th className="product-price text-center">Giá trị sản phẩm (VND)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {orderDetails && orderDetails.length !== 0 ? (
                                         orderDetails.map((od, index) => (
                                             <tr key={index}>
-                                                <td className="product-thumbnail">
-                                                    {od.productName}
+                                                <td className="product-thumbnail text-center">
+                                                    <img  style={{height:"200px",width:"200px",borderRadius:"10px"}}
+                                                        src={od.imageName} alt="Image" className="img-fluid"/>
                                                 </td>
-                                                <td>{od.quantity}</td>
-                                                <td>{od.categoryName}</td>
-                                                <td className="h5 text-black">{Util.moneyStandard(od.priceOder)}</td>
+                                                <td className="product-thumbnail text-center">{od.productName}</td>
+                                                <td className="product-thumbnail text-center">{od.quantity}</td>
+                                                <td className="product-thumbnail text-center">{od.categoryName}</td>
+                                                <td className="h5 text-black text-center">{Util.moneyStandard(od.priceOrder)}</td>
                                             </tr>))
                                     ) : (
                                         <tr>

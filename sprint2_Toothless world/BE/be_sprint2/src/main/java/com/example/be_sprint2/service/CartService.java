@@ -57,11 +57,11 @@ public class CartService implements ICartService {
     @Override
     public boolean addToCart(Integer userId, Integer productId, Integer quantityOrder) {
         try {
-            Optional<User> existUser = this.userRepository.findById((userId));
+            User existUser = this.userRepository.findById((userId));
             Product existProduct = this.productRepository.findProductById(productId);
             Optional<Cart> existCart = this.cartRepository.checkExistProductInCart(userId, productId);
 
-            boolean isDatavalid = existUser.isPresent() && existProduct != null;
+            boolean isDatavalid = existUser !=null && existProduct != null;
 
             if (isDatavalid && existCart.isPresent()) {
                 Optional<Cart> cart = this.cartRepository.checkExistProductInCart(userId, productId);
@@ -75,7 +75,7 @@ public class CartService implements ICartService {
                 }
 
             } else if (isDatavalid && !existCart.isPresent()) {
-                Cart newCart = new Cart(existUser.get(), existProduct, quantityOrder);
+                Cart newCart = new Cart(existUser, existProduct, quantityOrder);
                 this.cartRepository.save(newCart);
                 return true;
             } else {
@@ -131,11 +131,11 @@ public class CartService implements ICartService {
         try {
             Integer userId = orderPayDto.getUserId();
             String orderCode = OrderCodeGenerator.orderCodeGenerate();
-            Optional<User> existedUser = this.userRepository.findById(userId);
+            User existedUser = this.userRepository.findById(userId);
             LocalDateTime now = LocalDateTime.now();
 
-            if (existedUser.isPresent()) {
-                Order newOrder = new Order(now.toString(),orderCode,orderPayDto.getTotalMoney(),existedUser.get());
+            if (existedUser !=null) {
+                Order newOrder = new Order(now.toString(),orderCode,orderPayDto.getTotalMoney(),existedUser);
                 List<CartDto> existedUserCart = this.cartRepository.getCartDetailsByUserId(userId);
                 if (existedUserCart.size() > 0) {
                     this.orderRepository.save(newOrder);

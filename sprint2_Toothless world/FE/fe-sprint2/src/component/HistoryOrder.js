@@ -22,11 +22,6 @@ function HistoryOrder() {
         setCurrentPage(pageNumber);
     };
 
-    const goOrderDetails = (id) => {
-        navigate(`/orderDetail/${id}`);
-    }
-
-
 
 
     useEffect(() => {
@@ -75,7 +70,7 @@ function HistoryOrder() {
                                                 <td>{new Date(c.dateOfOrder).toLocaleTimeString()}</td>
                                                 <td className="h5 text-black">{Util.moneyStandard(c.totalMoney)}</td>
                                                 <td className="h5 text-black">
-                                                    <Link to={`/orderDetail/${c.orderId}`} >
+                                                    <Link to={`/orderDetail/${c.userId}/${c.orderId}`} >
                                                         <button  type="button" className="btn btn-secondary">Chi tiết</button></Link>
 
                                                 </td>

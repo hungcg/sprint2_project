@@ -46,19 +46,24 @@ function HomePage() {
                                     Vẻ đẹp hoàn hảo <span className="d-block">Tinh tế sáng tạo</span>
                                 </h1>
                                 <p className="mb-4">
-                                    Chạm nhẹ vào lối sống tinh tế, nâng tầm vẻ đẹp của không gian bằng nội thất độc đáo và sang trọng.
+                                    Chạm nhẹ vào lối sống tinh tế, nâng tầm vẻ đẹp của không gian bằng nội thất độc đáo
+                                    và sang trọng.
                                 </p>
                                 <p>
-                                    <Link href="" style={{fontWeight: "600",
+                                    <Link href="" style={{
+                                        fontWeight: "600",
                                         padding: "12px 30px",
-                                        borderRadius: "30px",fontSize:"1.1rem"}}
-                                       className="btn btn-secondary text-dark me-3" to="/shop">
+                                        borderRadius: "30px", fontSize: "1.1rem"
+                                    }}
+                                          className="btn btn-secondary text-dark me-3" to="/shop">
                                         Cửa hàng
                                     </Link>
-                                    <Link href="#" style={{fontWeight: "600",
+                                    <Link href="#" style={{
+                                        fontWeight: "600",
                                         padding: "12px 30px",
-                                        borderRadius: "30px"}}
-                                       className="btn btn-white-outline text-light" to="/shop">
+                                        borderRadius: "30px"
+                                    }}
+                                          className="btn btn-white-outline text-light" to="/shop">
                                         Khám phá
                                     </Link>
                                 </p>
@@ -85,67 +90,59 @@ function HomePage() {
                                 Được chế tạo bằng vật liệu tuyệt vời.
                             </h2>
                             <p className="mb-4">
-                                Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
-                                velit. Aliquam vulputate velit imperdiet dolor tempor tristique.{" "}
+                                Với màu sắc trung tính, nó là sự bổ sung tuyệt vời cho phòng khách hiện đại, tạo nên
+                                không gian thoải mái và trang nhã..{" "}
                             </p>
                             <p>
-                                <Link  style={{fontWeight: "600",
+                                <Link style={{
+                                    fontWeight: "600",
                                     padding: "12px 30px",
-                                    borderRadius: "30px"}} className="btn btn-dark text-light" to="/shop">
-                                   Khám phá
+                                    borderRadius: "30px"
+                                }} className="btn btn-dark text-light" to="/shop">
+                                    Khám phá
                                 </Link>
                             </p>
                         </div>
                         {/* End Column 1 */}
                         {/* Start Column 2 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <Link className="product-item" to="/detail">
+                            <Link className="product-item" to="/shop">
                                 <img
-                                    src="https://themewagon.github.io/furni/images/product-1.png"
+                                    style={{height: "270px", width: "300px"}}
+                                    src="https://i.pinimg.com/564x/7e/d4/34/7ed4343b271f1e16767c5476f346bced.jpg"
                                     className="img-fluid product-thumbnail"
                                 />
-                                <h3 className="product-title">Nordic Chair</h3>
-                                <strong className="product-price">$50.00</strong>
-                                <span className="icon-cross">
-              <img
-                  src="https://themewagon.github.io/furni/images/cross.svg"
-                  className="img-fluid"/>
-            </span>
+                                <h3 className="product-title">Sofa Rustic Comfort</h3>
                             </Link>
                         </div>
                         {/* End Column 2 */}
                         {/* Start Column 3 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a className="product-item" href="cart.html">
-                                <img
-                                    src="https://themewagon.github.io/furni/images/product-2.png"
-                                    className="img-fluid product-thumbnail"
-                                />
-                                <h3 className="product-title">Kruzo Aero Chair</h3>
-                                <strong className="product-price">$78.00</strong>
-                                <span className="icon-cross">
-              <img
-                  src="https://themewagon.github.io/furni/images/cross.svg"
-                  className="img-fluid"/>
-            </span>
-                            </a>
+                            <Link className="product-item" to="/shop">
+                                <a className="product-item">
+                                    <img
+                                        style={{height: "270px", width: "300px"}}
+                                        src="https://i.pinimg.com/564x/5c/a2/ad/5ca2ad5067e22dd59a88c44ed04cf91b.jpg"
+                                        className="img-fluid product-thumbnail"
+                                    />
+                                    <h3 className="product-title">Kruzo Aero Chair</h3>
+
+                                </a>
+                            </Link>
                         </div>
                         {/* End Column 3 */}
                         {/* Start Column 4 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                            <a className="product-item" href="cart.html">
-                                <img
-                                    src="https://themewagon.github.io/furni/images/product-3.png"
-                                    className="img-fluid product-thumbnail"
-                                />
-                                <h3 className="product-title">Ergonomic Chair</h3>
-                                <strong className="product-price">$43.00</strong>
-                                <span className="icon-cross">
-              <img
-                  src="https://themewagon.github.io/furni/images/cross.svg"
-                  className="img-fluid"/>
-            </span>
-                            </a>
+                            <Link className="product-item" to="/shop">
+                                <a className="product-item">
+                                    <img
+                                        style={{height: "270px", width: "300px"}}
+                                        src="https://i.pinimg.com/564x/0f/42/50/0f4250e40aedc53e5fed095f26e48509.jpg"
+                                        className="img-fluid product-thumbnail"
+                                    />
+                                    <h3 className="product-title">Ergonomic Chair</h3>
+                                </a>
+                            </Link>
                         </div>
                         {/* End Column 4 */}
                     </div>
@@ -159,8 +156,9 @@ function HomePage() {
                         <div className="col-lg-6">
                             <h2 className="section-title">Tại sao chọn chúng tôi</h2>
                             <p>
-                                Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
-                                velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
+                                Một chiếc sofa đơn với kiểu dáng độc đáo làm tăng thêm vẻ đẹp của phòng ngủ. Chất liệu
+                                vải nhẹ và các họa tiết tinh tế tạo nên không gian riêng tư và thoải mái, là nơi lý
+                                tưởng để đọc sách hoặc thư giãn.
                             </p>
                             <div className="row my-5">
                                 <div className="col-6 col-md-6">
@@ -174,9 +172,9 @@ function HomePage() {
                                         </div>
                                         <h3>Giao hàng Nhanh &amp; Miễn phí </h3>
                                         <p>
-                                            Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-                                            aliquet velit. Aliquam vulputate.
-                                        </p>
+                                            Trải nghiệm giao hàng nhanh chóng và miễn phí với dịch vụ của chúng tôi!
+                                            Chúng tôi cam kết mang đến sự thuận tiện và hài lòng cho khách hàng bằng
+                                            cách cung cấp dịch vụ giao hàng nhanh nhất. </p>
                                     </div>
                                 </div>
                                 <div className="col-6 col-md-6">
@@ -188,9 +186,9 @@ function HomePage() {
                                         </div>
                                         <h3>Thuận tiện mua sắm </h3>
                                         <p>
-                                            Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-                                            aliquet velit. Aliquam vulputate.
-                                        </p>
+                                            Trải nghiệm mua sắm thuận tiện tại cửa hàng của chúng tôi là ưu tiên hàng
+                                            đầu của chúng tôi. Chúng tôi hiểu rằng thời gian và sự tiện lợi của khách
+                                            hàng là quan trọng. </p>
                                     </div>
                                 </div>
                                 <div className="col-6 col-md-6">
@@ -204,9 +202,9 @@ function HomePage() {
                                         </div>
                                         <h3>Hỗ trợ 24/7 </h3>
                                         <p>
-                                            Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-                                            aliquet velit. Aliquam vulputate.
-                                        </p>
+                                            Để đảm bảo rằng bạn luôn có sự hỗ trợ khi cần thiết, chúng tôi tự hào cung
+                                            cấp dịch vụ hỗ trợ 24/7. Chúng tôi hiểu rằng nhu cầu và thắc mắc của khách
+                                            hàng có thể xuất hiện vào bất kỳ thời điểm nào trong ngày hoặc đêm. </p>
                                     </div>
                                 </div>
                                 <div className="col-6 col-md-6">
@@ -220,9 +218,9 @@ function HomePage() {
                                         </div>
                                         <h3>Đổi trả dễ dàng</h3>
                                         <p>
-                                            Donec vitae odio quis nisl dapibus malesuada. Nullam ac
-                                            aliquet velit. Aliquam vulputate.
-                                        </p>
+                                            Chính sách đổi trả dễ dàng là cam kết của chúng tôi để đảm bảo rằng bạn hài
+                                            lòng với mọi giao dịch mua sắm. Chúng tôi hiểu rằng có thể có những trường
+                                            hợp khi bạn cần thay đổi hoặc trả lại sản phẩm </p>
                                     </div>
                                 </div>
                             </div>
@@ -268,23 +266,26 @@ function HomePage() {
                                 Chúng tôi giúp bạn cải thiện không gian sống
                             </h2>
                             <p>
-                                Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis
-                                nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-                                velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-                                tristique senectus et netus et malesuada
+                                Chất liệu vải chống bám bụi và dễ lau chùi giúp chiếc sofa này trở thành lựa chọn thông
+                                minh cho những gia đình có trẻ nhỏ hoặc thú cưng. Bạn có thể dễ dàng duy trì vẻ mới và
+                                sạch sẽ của nó.
                             </p>
                             <ul className="list-unstyled custom-list my-4">
-                                <li>Donec vitae odio quis nisl dapibus malesuada</li>
-                                <li>Donec vitae odio quis nisl dapibus malesuada</li>
-                                <li>Donec vitae odio quis nisl dapibus malesuada</li>
-                                <li>Donec vitae odio quis nisl dapibus malesuada</li>
+                                <li>Ghế Sofa Chống Bám Bụi và Dễ Lau Chùi</li>
+                                <li>Sofa Phòng Khách Hiện Đại</li>
+                                <li>Sofa Ngoại Thất Bền Bỉ Cho Sân Vườn</li>
+                                <li>Sofa Phòng Khách Retro với Chân Gỗ Mộc Mạc</li>
                             </ul>
                             <p>
-                                <a href="shop.html" style={{fontWeight: "600",
-                                    padding: "12px 30px",
-                                    borderRadius: "30px"}} className="btn btn-dark text-light">
-                                    Khám phá
-                                </a>
+                                <Link className="product-item" to="/shop">
+                                    <a href="shop.html" style={{
+                                        fontWeight: "600",
+                                        padding: "12px 30px",
+                                        borderRadius: "30px"
+                                    }} className="btn btn-dark text-light">
+                                        Khám phá
+                                    </a>
+                                </Link>
                             </p>
                         </div>
                     </div>
@@ -307,7 +308,9 @@ function HomePage() {
                                 <div className="pt-3">
                                     <h3>Nordic Chair</h3>
                                     <p>
-                                        Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio{" "}
+                                        Với màu sắc trung tính, nó là sự bổ sung tuyệt vời cho phòng khách hiện đại, tạo
+                                        nên không gian thoải mái và trang nhã..{" "}
+                                        {" "}
                                     </p>
                                     <p>
                                         <a href="#">Read More</a>
@@ -327,7 +330,7 @@ function HomePage() {
                                 <div className="pt-3">
                                     <h3>Kruzo Aero Chair</h3>
                                     <p>
-                                        Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio{" "}
+                                        Chất liệu da hoặc vải chất lượng cao thêm vào sự sang trọng và ấm cúng.{" "}
                                     </p>
                                     <p>
                                         <a href="#">Read More</a>
@@ -347,7 +350,8 @@ function HomePage() {
                                 <div className="pt-3">
                                     <h3>Ergonomic Chair</h3>
                                     <p>
-                                        Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio{" "}
+                                        Với chân gỗ mộc mạc và các đường nét retro, chiếc sofa này mang đến một không
+                                        gian phòng khách với phong cách độc đáo và ấn tượng{" "}
                                     </p>
                                     <p>
                                         <a href="#">Read More</a>
